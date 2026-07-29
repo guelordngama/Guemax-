@@ -27,11 +27,11 @@ CITOYEN (site web) → GPS + formulaire → API Flask → Base de données
 | **database/** | Schéma et données de référence | SQL (SQLite par défaut) |
 | **tests/** | Tests automatisés | pytest |
 
-> Le module d'IA (`backend/utils/classification_ai.py`) fournit actuellement une
-> **classification de priorité par règles** (placeholder). Le vrai modèle **SVM**
-> entraîné (`ai_module/`), la documentation (`docs/`) et le déploiement
-> (`deployment/`) sont prévus dans les étapes suivantes ; l'interface du
-> classifieur est déjà stable pour un remplacement transparent.
+> La priorité des alertes est classée par un **modèle SVM** entraîné
+> (`ai_module/`). Le backend charge ce modèle lorsqu'il est disponible et
+> retombe automatiquement sur un classifieur par règles si scikit-learn ou le
+> modèle sont absents (par ex. en CI). La documentation (`docs/`) et le
+> déploiement (`deployment/`) sont prévus dans les étapes suivantes.
 
 ---
 
@@ -151,9 +151,25 @@ le canal temps réel Socket.IO. La CI (GitHub Actions) les exécute sur Python
 
 ---
 
+## 🧠 Module d'IA (`ai_module/`)
+
+Classifieur de **priorité** des alertes (basse / moyenne / haute / critique) par
+**SVM linéaire calibré** + TF-IDF sur la description enrichie de la catégorie et
+de la gravité.
+
+```bash
+pip install -r ai_module/requirements.txt
+cd ai_module
+python train_model.py                                   # entraîne et sauvegarde model_svm.joblib
+python predict.py "Agression à main armée, blessé" --category agression --severity critique
+```
+
+Le backend l'utilise automatiquement dès que `model_svm.joblib` est présent
+(sinon repli sur les règles). Le jeu `dataset.csv` est synthétique et destiné à
+être remplacé par des données historiques réelles.
+
 ## 🗺️ Étapes suivantes (déjà prévues dans la structure)
 
-- 🧠 **ai_module/** : entraînement du modèle **SVM** et intégration réelle.
 - 📄 **docs/** : mémoire, présentation mairie, diagrammes UML et d'architecture.
 - ☁️ **deployment/** : Nginx, Gunicorn, HTTPS/SSL, script d'installation serveur.
 - 👮 Gestion des **interventions** et affectation des **agents** aux alertes.

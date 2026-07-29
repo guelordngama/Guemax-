@@ -1,0 +1,705 @@
+description,category,severity,priority
+"Câble électrique tombé au marché, couteau",electricite,critique,critique
+"Vol signalé dans le quartier Kenya, à main armée",vol,critique,critique
+Menaces avec violence derrière le stade,agression,eleve,critique
+"Objet abandonné près du rond-point, mort",autre,moyen,moyenne
+"Caniveau bouché au centre-ville, à main armée",infrastructure,eleve,haute
+"Câble électrique tombé à Kamalondo, couteau",electricite,moyen,moyenne
+"Câble électrique tombé dans le quartier Kenya, danger de mort",electricite,critique,critique
+Maisons envahies par l'eau à Kamalondo,inondation,critique,critique
+Débordement d'un caniveau sur l'avenue Kasaï,inondation,faible,basse
+"Transformateur en panne dans une parcelle, couteau",electricite,eleve,haute
+"Une personne se fait agresser au marché, mort",agression,faible,haute
+Fumée épaisse et flammes au marché,incendie,critique,critique
+Agression dans le quartier Kenya,agression,faible,moyenne
+Route dégradée au centre-ville,infrastructure,faible,basse
+"Collision entre deux véhicules sur l'avenue Kasaï, couteau",accident,critique,critique
+"Problème non identifié près de l'école, couteau",autre,critique,critique
+Vol signalé près de l'école,vol,eleve,haute
+Moto renversée au marché,accident,moyen,moyenne
+"Agression sur l'avenue Kasaï, blessé",agression,eleve,critique
+Vol de moto à la station,vol,faible,basse
+"Agression près du rond-point, explosion",agression,critique,critique
+"Menaces avec violence près de l'école, sang",agression,critique,critique
+"Vol de moto à la station, blessé",vol,eleve,critique
+Moto renversée près de l'école,accident,moyen,moyenne
+"Problème non identifié au centre-ville, enfant",autre,critique,critique
+"Objet abandonné dans le quartier Kenya, blessé",autre,critique,critique
+"Collision entre deux véhicules à la station, noyade",accident,eleve,critique
+"Court-circuit ayant provoqué un incendie derrière le stade, couteau",incendie,eleve,critique
+Collision entre deux véhicules près du rond-point,accident,faible,basse
+"Pont abîmé dans le quartier Kenya, mort",infrastructure,eleve,haute
+Moto renversée à l'arrêt de bus,accident,moyen,moyenne
+Feu de brousse sur l'avenue Kasaï,incendie,moyen,haute
+"Vol à l'arraché à la Ruashi, à main armée",vol,critique,critique
+"Pont abîmé au centre-ville, mort",infrastructure,moyen,moyenne
+"Véhicule accidenté près du rond-point, arme",accident,critique,critique
+Route inondée au centre-ville,inondation,eleve,haute
+Lampadaire cassé à la station,infrastructure,faible,basse
+Panne de courant à l'arrêt de bus,electricite,moyen,basse
+Vol de moto à l'arrêt de bus,vol,faible,basse
+Collision entre deux véhicules à Kamalondo,accident,moyen,moyenne
+"Effraction constatée près du rond-point, couteau",vol,critique,critique
+Problème non identifié près du rond-point,autre,faible,basse
+"Agression physique près du rond-point, au secours",agression,critique,critique
+Fumée épaisse et flammes au centre-ville,incendie,eleve,critique
+Poteau électrique endommagé dans une parcelle,electricite,faible,basse
+"Fortes pluies provoquant une inondation dans le quartier Kenya, blessé",inondation,faible,moyenne
+Vol de moto sur l'avenue Kasaï,vol,eleve,haute
+Problème non identifié dans une parcelle,autre,moyen,basse
+"Caniveau bouché près de l'école, noyade",infrastructure,moyen,moyenne
+"Attaque signalée près de l'école, sang",agression,faible,haute
+Collision entre deux véhicules près du rond-point,accident,eleve,haute
+"Nuisance signalée à la Ruashi, feu",autre,critique,critique
+"Un individu a volé un téléphone près de l'école, blessé",vol,eleve,critique
+"Route dégradée derrière le stade, à main armée",infrastructure,moyen,moyenne
+Collision entre deux véhicules près de l'école,accident,faible,basse
+Poteau électrique endommagé près du rond-point,electricite,faible,basse
+"Cambriolage d'une maison près du rond-point, noyade",vol,moyen,haute
+"Accident de circulation sur l'avenue Kasaï, noyade",accident,eleve,critique
+"Court-circuit ayant provoqué un incendie dans le quartier Kenya, explosion",incendie,critique,critique
+Accident impliquant un piéton près du rond-point,accident,eleve,haute
+Un individu a volé un téléphone au centre-ville,vol,faible,basse
+Départ de feu près du rond-point,incendie,moyen,haute
+"Transformateur en panne au centre-ville, sang",electricite,critique,critique
+Incident divers derrière le stade,autre,moyen,basse
+Caniveau bouché à Kamalondo,infrastructure,faible,basse
+"Menaces avec violence au centre-ville, au secours",agression,moyen,critique
+Débordement d'un caniveau au marché,inondation,faible,basse
+Problème non identifié dans le quartier Kenya,autre,moyen,basse
+"Câble électrique tombé au centre-ville, urgent",electricite,faible,basse
+Agression à la station,agression,faible,moyenne
+"Bagarre violente à Kamalondo, sang",agression,moyen,critique
+"Route inondée dans une parcelle, couteau",inondation,eleve,critique
+Objet abandonné au marché,autre,moyen,basse
+"Accident de circulation au centre-ville, à main armée",accident,moyen,haute
+Nuisance signalée au marché,autre,eleve,moyenne
+Incident divers à l'arrêt de bus,autre,faible,basse
+Route inondée près du rond-point,inondation,moyen,moyenne
+Fortes pluies provoquant une inondation derrière le stade,inondation,faible,basse
+Maisons envahies par l'eau à la Ruashi,inondation,moyen,moyenne
+"Maison en feu dans une parcelle, personne blessée",incendie,eleve,critique
+Voirie endommagée près du rond-point,infrastructure,eleve,moyenne
+Fumée épaisse et flammes près de l'école,incendie,eleve,critique
+"Fumée épaisse et flammes au marché, explosion",incendie,faible,haute
+Une personne se fait agresser à la station,agression,eleve,critique
+Agression près de l'école,agression,moyen,haute
+Départ de feu au centre-ville,incendie,critique,critique
+"Voirie endommagée à Kamalondo, danger de mort",infrastructure,moyen,moyenne
+Transformateur en panne près de l'école,electricite,eleve,moyenne
+Maisons envahies par l'eau au centre-ville,inondation,moyen,moyenne
+"Lampadaire cassé au marché, sang",infrastructure,eleve,haute
+Nid-de-poule dangereux derrière le stade,infrastructure,moyen,basse
+"Inondation dans le quartier Kenya, arme",inondation,moyen,haute
+"Vol de moto près de l'école, blessé",vol,faible,moyenne
+"Situation inhabituelle sur l'avenue Kasaï, arme",autre,eleve,haute
+"Route dégradée sur l'avenue Kasaï, noyade",infrastructure,critique,critique
+"Carambolage dans le quartier Kenya, urgent",accident,moyen,haute
+"Moto renversée sur l'avenue Kasaï, à main armée",accident,eleve,critique
+Câble électrique tombé au marché,electricite,faible,basse
+Débordement d'un caniveau près du rond-point,inondation,critique,critique
+Moto renversée derrière le stade,accident,moyen,moyenne
+"Agression au centre-ville, sang",agression,moyen,critique
+Lampadaire cassé au marché,infrastructure,moyen,basse
+"Inondation à la Ruashi, noyade",inondation,critique,critique
+Absence de courant depuis des heures au marché,electricite,moyen,basse
+"Panne de courant près de l'école, au secours",electricite,critique,critique
+Pont abîmé dans une parcelle,infrastructure,moyen,basse
+Objet abandonné derrière le stade,autre,eleve,moyenne
+"Maison en feu sur l'avenue Kasaï, couteau",incendie,critique,critique
+"Absence de courant depuis des heures au marché, au secours",electricite,eleve,haute
+"Fumée épaisse et flammes à la station, feu",incendie,eleve,critique
+Moto renversée à l'arrêt de bus,accident,eleve,haute
+Coupure d'électricité sur l'avenue Kasaï,electricite,faible,basse
+"Cambriolage d'une maison sur l'avenue Kasaï, feu",vol,eleve,critique
+Moto renversée près du rond-point,accident,eleve,haute
+Nid-de-poule dangereux à Kamalondo,infrastructure,critique,haute
+Inondation derrière le stade,inondation,faible,basse
+"Maisons envahies par l'eau sur l'avenue Kasaï, feu",inondation,critique,critique
+"Câble électrique tombé à l'arrêt de bus, enfant",electricite,eleve,haute
+"Incendie à la Ruashi, noyade",incendie,eleve,critique
+Court-circuit ayant provoqué un incendie sur l'avenue Kasaï,incendie,eleve,critique
+Maison en feu à la station,incendie,eleve,critique
+Feu de brousse dans le quartier Kenya,incendie,faible,moyenne
+Cambriolage d'une maison dans une parcelle,vol,eleve,haute
+Véhicule accidenté derrière le stade,accident,faible,basse
+Accident impliquant un piéton sur l'avenue Kasaï,accident,faible,basse
+"Vol de moto à l'arrêt de bus, sang",vol,critique,critique
+"Route dégradée près de l'école, sang",infrastructure,faible,basse
+Vol signalé près de l'école,vol,eleve,haute
+Débordement d'un caniveau au marché,inondation,faible,basse
+Attaque signalée au centre-ville,agression,critique,critique
+Agression physique au centre-ville,agression,faible,moyenne
+Feu de brousse à la station,incendie,critique,critique
+"Départ de feu à Kamalondo, personne blessée",incendie,critique,critique
+"Maisons envahies par l'eau à l'arrêt de bus, explosion",inondation,critique,critique
+Route inondée derrière le stade,inondation,faible,basse
+"Accident impliquant un piéton près du rond-point, personne blessée",accident,faible,moyenne
+Une personne se fait agresser à Kamalondo,agression,faible,moyenne
+Maison en feu dans une parcelle,incendie,moyen,haute
+Problème non identifié au centre-ville,autre,eleve,moyenne
+"Coupure d'électricité sur l'avenue Kasaï, arme",electricite,eleve,haute
+Fortes pluies provoquant une inondation au marché,inondation,faible,basse
+Situation inhabituelle sur l'avenue Kasaï,autre,faible,basse
+"Une personne se fait agresser à l'arrêt de bus, danger de mort",agression,eleve,critique
+"Objet abandonné dans une parcelle, au secours",autre,critique,critique
+"Véhicule accidenté à la station, danger de mort",accident,moyen,haute
+"Maison en feu dans le quartier Kenya, arme",incendie,critique,critique
+Câble électrique tombé au centre-ville,electricite,eleve,moyenne
+Un individu a volé un téléphone à la station,vol,moyen,moyenne
+"Maisons envahies par l'eau à l'arrêt de bus, enfant",inondation,eleve,critique
+"Maison en feu derrière le stade, personne blessée",incendie,eleve,critique
+"Pont abîmé dans une parcelle, blessé",infrastructure,critique,critique
+"Court-circuit ayant provoqué un incendie à la station, blessé",incendie,critique,critique
+Départ de feu près du rond-point,incendie,critique,critique
+"Cambriolage d'une maison à Kamalondo, à main armée",vol,faible,moyenne
+Route inondée derrière le stade,inondation,faible,basse
+Vol signalé à Kamalondo,vol,moyen,moyenne
+Bagarre violente derrière le stade,agression,faible,moyenne
+"Cambriolage d'une maison à Kamalondo, arme",vol,critique,critique
+Feu de brousse à l'arrêt de bus,incendie,faible,moyenne
+"Incident divers dans une parcelle, sang",autre,critique,critique
+"Fortes pluies provoquant une inondation au centre-ville, blessé",inondation,moyen,haute
+"Vol à l'arraché dans une parcelle, enfant",vol,moyen,haute
+Débordement d'un caniveau au centre-ville,inondation,critique,critique
+Route inondée dans le quartier Kenya,inondation,faible,basse
+Un individu a volé un téléphone près de l'école,vol,faible,basse
+"Situation inhabituelle dans une parcelle, explosion",autre,faible,basse
+Effraction constatée au marché,vol,critique,critique
+Panne de courant dans le quartier Kenya,electricite,critique,haute
+Un individu a volé un téléphone à Kamalondo,vol,faible,basse
+"Situation inhabituelle à la Ruashi, danger de mort",autre,moyen,moyenne
+"Incident divers à l'arrêt de bus, arme",autre,critique,critique
+Menaces avec violence dans une parcelle,agression,eleve,critique
+Départ de feu à Kamalondo,incendie,faible,moyenne
+Bagarre violente à la station,agression,moyen,haute
+"Maisons envahies par l'eau au marché, couteau",inondation,eleve,critique
+"Une personne se fait agresser à la Ruashi, explosion",agression,eleve,critique
+Inondation au marché,inondation,moyen,moyenne
+"Collision entre deux véhicules derrière le stade, explosion",accident,critique,critique
+"Incendie dans une parcelle, explosion",incendie,critique,critique
+"Départ de feu à la station, danger de mort",incendie,eleve,critique
+Voirie endommagée près du rond-point,infrastructure,faible,basse
+Agression physique au marché,agression,critique,critique
+"Transformateur en panne à Kamalondo, feu",electricite,critique,critique
+"Caniveau bouché derrière le stade, à main armée",infrastructure,critique,critique
+Moto renversée dans une parcelle,accident,moyen,moyenne
+"Menaces avec violence près du rond-point, sang",agression,eleve,critique
+Inondation dans le quartier Kenya,inondation,faible,basse
+"Câble électrique tombé à la station, personne blessée",electricite,moyen,moyenne
+"Absence de courant depuis des heures près de l'école, au secours",electricite,moyen,moyenne
+"Montée des eaux au marché, mort",inondation,eleve,critique
+Voirie endommagée près du rond-point,infrastructure,moyen,basse
+Court-circuit ayant provoqué un incendie à la station,incendie,moyen,haute
+Un individu a volé un téléphone derrière le stade,vol,moyen,moyenne
+Vol signalé à la station,vol,faible,basse
+"Situation inhabituelle dans une parcelle, sang",autre,moyen,moyenne
+Situation inhabituelle au marché,autre,moyen,basse
+"Menaces avec violence au centre-ville, à main armée",agression,moyen,critique
+Inondation derrière le stade,inondation,eleve,haute
+Véhicule accidenté dans une parcelle,accident,faible,basse
+Transformateur en panne à la Ruashi,electricite,faible,basse
+Cambriolage d'une maison dans une parcelle,vol,moyen,moyenne
+Maisons envahies par l'eau dans le quartier Kenya,inondation,moyen,moyenne
+Montée des eaux dans le quartier Kenya,inondation,faible,basse
+Feu de brousse sur l'avenue Kasaï,incendie,faible,moyenne
+"Accident impliquant un piéton près du rond-point, explosion",accident,critique,critique
+Nid-de-poule dangereux dans une parcelle,infrastructure,faible,basse
+"Attaque signalée près du rond-point, blessé",agression,critique,critique
+Agression physique sur l'avenue Kasaï,agression,faible,moyenne
+"Maisons envahies par l'eau dans une parcelle, à main armée",inondation,critique,critique
+"Voirie endommagée dans le quartier Kenya, arme",infrastructure,moyen,moyenne
+"Câble électrique tombé derrière le stade, mort",electricite,critique,critique
+Objet abandonné à Kamalondo,autre,faible,basse
+"Maison en feu près de l'école, explosion",incendie,moyen,critique
+"Nuisance signalée près de l'école, mort",autre,moyen,moyenne
+Attaque signalée sur l'avenue Kasaï,agression,faible,moyenne
+"Panne de courant au marché, urgent",electricite,eleve,haute
+"Nid-de-poule dangereux à la Ruashi, sang",infrastructure,faible,basse
+Attroupement suspect sur l'avenue Kasaï,autre,moyen,basse
+Fortes pluies provoquant une inondation sur l'avenue Kasaï,inondation,critique,critique
+"Vol signalé près de l'école, couteau",vol,moyen,haute
+"Une personne se fait agresser sur l'avenue Kasaï, au secours",agression,eleve,critique
+Vol signalé dans une parcelle,vol,eleve,haute
+"Moto renversée à l'arrêt de bus, feu",accident,critique,critique
+"Vol de moto dans une parcelle, urgent",vol,critique,critique
+Accident impliquant un piéton près de l'école,accident,moyen,moyenne
+Cambriolage d'une maison dans une parcelle,vol,eleve,haute
+"Fumée épaisse et flammes sur l'avenue Kasaï, au secours",incendie,moyen,critique
+"Fumée épaisse et flammes près du rond-point, arme",incendie,critique,critique
+Transformateur en panne dans une parcelle,electricite,faible,basse
+Attaque signalée derrière le stade,agression,eleve,critique
+Incident divers à Kamalondo,autre,faible,basse
+"Feu de brousse dans le quartier Kenya, au secours",incendie,eleve,critique
+"Une personne se fait agresser au centre-ville, enfant",agression,critique,critique
+Vol signalé à la Ruashi,vol,faible,basse
+"Situation inhabituelle sur l'avenue Kasaï, blessé",autre,faible,basse
+"Vol à l'arraché à la station, explosion",vol,critique,critique
+"Attroupement suspect près de l'école, noyade",autre,critique,critique
+Une personne se fait agresser à la Ruashi,agression,eleve,critique
+"Moto renversée dans le quartier Kenya, personne blessée",accident,eleve,critique
+Accident impliquant un piéton à la station,accident,faible,basse
+Carambolage à l'arrêt de bus,accident,critique,critique
+"Inondation près de l'école, couteau",inondation,eleve,critique
+"Débordement d'un caniveau au centre-ville, personne blessée",inondation,critique,critique
+Vol à l'arraché derrière le stade,vol,eleve,haute
+Un individu a volé un téléphone dans le quartier Kenya,vol,faible,basse
+"Incident divers près du rond-point, personne blessée",autre,critique,critique
+Pont abîmé à la Ruashi,infrastructure,moyen,basse
+Véhicule accidenté sur l'avenue Kasaï,accident,eleve,haute
+"Lampadaire cassé à Kamalondo, danger de mort",infrastructure,critique,critique
+"Accident impliquant un piéton à la station, couteau",accident,moyen,haute
+"Maison en feu près de l'école, urgent",incendie,eleve,critique
+Débordement d'un caniveau derrière le stade,inondation,faible,basse
+"Effraction constatée dans une parcelle, enfant",vol,critique,critique
+Véhicule accidenté au marché,accident,moyen,moyenne
+"Bagarre violente près de l'école, au secours",agression,critique,critique
+"Carambolage près du rond-point, danger de mort",accident,eleve,critique
+Route dégradée au centre-ville,infrastructure,eleve,moyenne
+"Vol de moto au centre-ville, mort",vol,moyen,haute
+"Cambriolage d'une maison à l'arrêt de bus, feu",vol,critique,critique
+"Poteau électrique endommagé à l'arrêt de bus, arme",electricite,faible,basse
+"Nid-de-poule dangereux à la station, noyade",infrastructure,critique,critique
+"Carambolage à l'arrêt de bus, à main armée",accident,critique,critique
+Route dégradée près de l'école,infrastructure,eleve,moyenne
+"Caniveau bouché près du rond-point, danger de mort",infrastructure,eleve,haute
+Court-circuit ayant provoqué un incendie à Kamalondo,incendie,moyen,haute
+Débordement d'un caniveau à la Ruashi,inondation,eleve,haute
+Panne de courant au centre-ville,electricite,critique,haute
+Vol de moto dans une parcelle,vol,moyen,moyenne
+"Maisons envahies par l'eau à Kamalondo, urgent",inondation,critique,critique
+"Pont abîmé au centre-ville, enfant",infrastructure,moyen,moyenne
+Montée des eaux derrière le stade,inondation,moyen,moyenne
+"Incendie derrière le stade, blessé",incendie,critique,critique
+Caniveau bouché à l'arrêt de bus,infrastructure,eleve,moyenne
+"Câble électrique tombé dans une parcelle, au secours",electricite,critique,critique
+"Inondation dans le quartier Kenya, explosion",inondation,eleve,critique
+"Route dégradée à l'arrêt de bus, urgent",infrastructure,eleve,haute
+"Nuisance signalée à la station, urgent",autre,eleve,haute
+Accident impliquant un piéton à l'arrêt de bus,accident,faible,basse
+Une personne se fait agresser au centre-ville,agression,moyen,haute
+"Incendie à la Ruashi, sang",incendie,faible,haute
+Bagarre violente près du rond-point,agression,faible,moyenne
+"Nid-de-poule dangereux au marché, blessé",infrastructure,moyen,moyenne
+Panne de courant à l'arrêt de bus,electricite,faible,basse
+"Voirie endommagée près du rond-point, au secours",infrastructure,critique,critique
+Effraction constatée au marché,vol,eleve,haute
+"Cambriolage d'une maison derrière le stade, enfant",vol,eleve,critique
+"Objet abandonné à l'arrêt de bus, sang",autre,critique,critique
+Véhicule accidenté dans une parcelle,accident,eleve,haute
+"Nuisance signalée dans une parcelle, enfant",autre,critique,critique
+Poteau électrique endommagé derrière le stade,electricite,moyen,basse
+"Attaque signalée dans le quartier Kenya, explosion",agression,eleve,critique
+"Objet abandonné à la Ruashi, personne blessée",autre,moyen,moyenne
+"Pont abîmé près du rond-point, au secours",infrastructure,moyen,moyenne
+"Débordement d'un caniveau à la Ruashi, personne blessée",inondation,critique,critique
+Transformateur en panne près du rond-point,electricite,eleve,moyenne
+Situation inhabituelle sur l'avenue Kasaï,autre,faible,basse
+"Lampadaire cassé à la station, au secours",infrastructure,eleve,haute
+Caniveau bouché à la station,infrastructure,critique,haute
+Fumée épaisse et flammes à l'arrêt de bus,incendie,faible,moyenne
+"Pont abîmé derrière le stade, au secours",infrastructure,critique,critique
+"Feu de brousse à la Ruashi, feu",incendie,critique,critique
+"Carambolage sur l'avenue Kasaï, urgent",accident,critique,critique
+"Carambolage sur l'avenue Kasaï, couteau",accident,critique,critique
+"Feu de brousse dans le quartier Kenya, arme",incendie,eleve,critique
+Accident impliquant un piéton à l'arrêt de bus,accident,faible,basse
+Accident impliquant un piéton près du rond-point,accident,eleve,haute
+Moto renversée à l'arrêt de bus,accident,critique,critique
+Fortes pluies provoquant une inondation derrière le stade,inondation,moyen,moyenne
+Vol signalé près de l'école,vol,faible,basse
+Cambriolage d'une maison à la Ruashi,vol,critique,critique
+Absence de courant depuis des heures derrière le stade,electricite,critique,haute
+Attaque signalée à la Ruashi,agression,moyen,haute
+"Caniveau bouché à la station, feu",infrastructure,critique,critique
+"Poteau électrique endommagé dans le quartier Kenya, arme",electricite,critique,critique
+Caniveau bouché dans une parcelle,infrastructure,faible,basse
+Nid-de-poule dangereux à l'arrêt de bus,infrastructure,eleve,moyenne
+"Situation inhabituelle à l'arrêt de bus, arme",autre,eleve,haute
+Problème non identifié dans le quartier Kenya,autre,eleve,moyenne
+"Poteau électrique endommagé derrière le stade, blessé",electricite,eleve,haute
+Vol à l'arraché à la Ruashi,vol,moyen,moyenne
+Maison en feu à la station,incendie,faible,moyenne
+"Fortes pluies provoquant une inondation sur l'avenue Kasaï, blessé",inondation,critique,critique
+"Voirie endommagée près de l'école, explosion",infrastructure,critique,critique
+"Incident divers à l'arrêt de bus, à main armée",autre,moyen,moyenne
+"Attroupement suspect à la station, urgent",autre,faible,basse
+"Feu de brousse dans une parcelle, personne blessée",incendie,eleve,critique
+"Objet abandonné à la Ruashi, noyade",autre,eleve,haute
+"Vol de moto à Kamalondo, feu",vol,critique,critique
+"Transformateur en panne à Kamalondo, blessé",electricite,critique,critique
+"Moto renversée près du rond-point, à main armée",accident,critique,critique
+"Incident divers sur l'avenue Kasaï, feu",autre,critique,critique
+Moto renversée dans le quartier Kenya,accident,critique,critique
+Attaque signalée au centre-ville,agression,moyen,haute
+"Bagarre violente derrière le stade, au secours",agression,critique,critique
+Incendie près du rond-point,incendie,faible,moyenne
+Accident de circulation dans une parcelle,accident,critique,critique
+Lampadaire cassé au centre-ville,infrastructure,eleve,moyenne
+"Incident divers sur l'avenue Kasaï, feu",autre,critique,critique
+Fortes pluies provoquant une inondation derrière le stade,inondation,faible,basse
+Agression physique près de l'école,agression,moyen,haute
+Caniveau bouché près du rond-point,infrastructure,eleve,moyenne
+"Agression physique dans une parcelle, danger de mort",agression,faible,haute
+"Cambriolage d'une maison à la Ruashi, mort",vol,critique,critique
+Attaque signalée à l'arrêt de bus,agression,eleve,critique
+Route inondée derrière le stade,inondation,critique,critique
+"Situation inhabituelle près du rond-point, explosion",autre,eleve,haute
+"Fumée épaisse et flammes dans une parcelle, mort",incendie,moyen,critique
+Court-circuit ayant provoqué un incendie à la Ruashi,incendie,faible,moyenne
+Montée des eaux près de l'école,inondation,faible,basse
+Un individu a volé un téléphone au marché,vol,faible,basse
+"Situation inhabituelle près du rond-point, enfant",autre,eleve,haute
+Nid-de-poule dangereux près de l'école,infrastructure,moyen,basse
+"Maison en feu dans une parcelle, à main armée",incendie,moyen,critique
+Route dégradée derrière le stade,infrastructure,faible,basse
+"Lampadaire cassé au marché, arme",infrastructure,moyen,moyenne
+"Attaque signalée à Kamalondo, mort",agression,critique,critique
+"Lampadaire cassé à l'arrêt de bus, personne blessée",infrastructure,critique,critique
+"Débordement d'un caniveau à la station, mort",inondation,moyen,haute
+Câble électrique tombé dans le quartier Kenya,electricite,faible,basse
+"Véhicule accidenté à Kamalondo, noyade",accident,eleve,critique
+"Vol à l'arraché au marché, personne blessée",vol,eleve,critique
+Route inondée près de l'école,inondation,eleve,haute
+Objet abandonné près du rond-point,autre,faible,basse
+"Accident de circulation dans le quartier Kenya, enfant",accident,critique,critique
+Pont abîmé dans une parcelle,infrastructure,faible,basse
+Agression près de l'école,agression,eleve,critique
+"Bagarre violente dans le quartier Kenya, sang",agression,critique,critique
+Accident de circulation au centre-ville,accident,faible,basse
+Feu de brousse à la station,incendie,critique,critique
+Situation inhabituelle au marché,autre,faible,basse
+"Carambolage au centre-ville, urgent",accident,eleve,critique
+Moto renversée à la Ruashi,accident,faible,basse
+Attaque signalée sur l'avenue Kasaï,agression,eleve,critique
+"Transformateur en panne dans une parcelle, couteau",electricite,critique,critique
+"Poteau électrique endommagé dans le quartier Kenya, couteau",electricite,critique,critique
+Une personne se fait agresser à la Ruashi,agression,moyen,haute
+Véhicule accidenté près de l'école,accident,moyen,moyenne
+Transformateur en panne près du rond-point,electricite,eleve,moyenne
+Absence de courant depuis des heures derrière le stade,electricite,eleve,moyenne
+"Route inondée à l'arrêt de bus, couteau",inondation,eleve,critique
+Panne de courant à la Ruashi,electricite,faible,basse
+Câble électrique tombé au centre-ville,electricite,moyen,basse
+Situation inhabituelle à la Ruashi,autre,faible,basse
+Lampadaire cassé près de l'école,infrastructure,critique,haute
+"Objet abandonné dans une parcelle, blessé",autre,critique,critique
+Transformateur en panne à la Ruashi,electricite,eleve,moyenne
+"Route inondée à l'arrêt de bus, au secours",inondation,eleve,critique
+"Une personne se fait agresser au marché, au secours",agression,faible,haute
+Vol à l'arraché à Kamalondo,vol,faible,basse
+"Attaque signalée derrière le stade, personne blessée",agression,critique,critique
+Attaque signalée près du rond-point,agression,critique,critique
+Agression physique sur l'avenue Kasaï,agression,faible,moyenne
+"Moto renversée au marché, couteau",accident,critique,critique
+"Transformateur en panne dans une parcelle, arme",electricite,eleve,haute
+"Départ de feu dans le quartier Kenya, noyade",incendie,moyen,critique
+"Coupure d'électricité derrière le stade, urgent",electricite,faible,basse
+"Fortes pluies provoquant une inondation dans une parcelle, explosion",inondation,eleve,critique
+Départ de feu à Kamalondo,incendie,moyen,haute
+Montée des eaux dans une parcelle,inondation,moyen,moyenne
+"Attaque signalée sur l'avenue Kasaï, personne blessée",agression,faible,haute
+"Incident divers près de l'école, urgent",autre,eleve,haute
+Vol de moto au centre-ville,vol,faible,basse
+Départ de feu sur l'avenue Kasaï,incendie,eleve,critique
+"Incident divers au centre-ville, couteau",autre,moyen,moyenne
+Nuisance signalée à la Ruashi,autre,faible,basse
+Caniveau bouché derrière le stade,infrastructure,eleve,moyenne
+Nuisance signalée à Kamalondo,autre,eleve,moyenne
+"Cambriolage d'une maison derrière le stade, au secours",vol,moyen,haute
+Incident divers au centre-ville,autre,moyen,basse
+"Voirie endommagée au centre-ville, feu",infrastructure,eleve,haute
+Maison en feu à la station,incendie,faible,moyenne
+"Effraction constatée à l'arrêt de bus, personne blessée",vol,eleve,critique
+"Objet abandonné à l'arrêt de bus, danger de mort",autre,faible,basse
+"Carambolage à Kamalondo, noyade",accident,eleve,critique
+Vol signalé derrière le stade,vol,moyen,moyenne
+Incident divers à la Ruashi,autre,faible,basse
+Attaque signalée à la Ruashi,agression,critique,critique
+Une personne se fait agresser sur l'avenue Kasaï,agression,faible,moyenne
+Caniveau bouché près de l'école,infrastructure,faible,basse
+Agression physique près de l'école,agression,moyen,haute
+Accident impliquant un piéton au marché,accident,moyen,moyenne
+"Vol de moto à la Ruashi, mort",vol,critique,critique
+"Incendie près de l'école, au secours",incendie,faible,haute
+Câble électrique tombé près de l'école,electricite,moyen,basse
+Coupure d'électricité près de l'école,electricite,faible,basse
+Absence de courant depuis des heures derrière le stade,electricite,moyen,basse
+Maison en feu sur l'avenue Kasaï,incendie,moyen,haute
+"Effraction constatée à la station, explosion",vol,moyen,haute
+Nuisance signalée près du rond-point,autre,critique,haute
+Débordement d'un caniveau à la station,inondation,eleve,haute
+Coupure d'électricité à Kamalondo,electricite,moyen,basse
+Montée des eaux dans une parcelle,inondation,faible,basse
+Câble électrique tombé au marché,electricite,faible,basse
+"Objet abandonné à la station, noyade",autre,critique,critique
+"Agression physique à Kamalondo, au secours",agression,moyen,critique
+"Véhicule accidenté près du rond-point, feu",accident,critique,critique
+Maison en feu sur l'avenue Kasaï,incendie,faible,moyenne
+"Poteau électrique endommagé derrière le stade, feu",electricite,eleve,haute
+Agression au marché,agression,faible,moyenne
+Accident de circulation près de l'école,accident,faible,basse
+"Caniveau bouché derrière le stade, à main armée",infrastructure,critique,critique
+"Cambriolage d'une maison dans le quartier Kenya, urgent",vol,critique,critique
+Accident impliquant un piéton à la Ruashi,accident,moyen,moyenne
+Accident de circulation à l'arrêt de bus,accident,moyen,moyenne
+Lampadaire cassé au marché,infrastructure,faible,basse
+Poteau électrique endommagé à l'arrêt de bus,electricite,moyen,basse
+Fumée épaisse et flammes derrière le stade,incendie,faible,moyenne
+"Nid-de-poule dangereux dans une parcelle, à main armée",infrastructure,eleve,haute
+Accident impliquant un piéton au centre-ville,accident,faible,basse
+"Situation inhabituelle dans une parcelle, noyade",autre,eleve,haute
+"Maison en feu dans une parcelle, à main armée",incendie,eleve,critique
+Accident de circulation dans le quartier Kenya,accident,faible,basse
+"Absence de courant depuis des heures au centre-ville, à main armée",electricite,eleve,haute
+Caniveau bouché à la Ruashi,infrastructure,eleve,moyenne
+Maison en feu près de l'école,incendie,faible,moyenne
+Moto renversée derrière le stade,accident,moyen,moyenne
+Court-circuit ayant provoqué un incendie sur l'avenue Kasaï,incendie,critique,critique
+Incendie dans une parcelle,incendie,eleve,critique
+Attaque signalée dans une parcelle,agression,faible,moyenne
+"Route dégradée au centre-ville, personne blessée",infrastructure,critique,critique
+Absence de courant depuis des heures à la Ruashi,electricite,faible,basse
+"Lampadaire cassé dans une parcelle, à main armée",infrastructure,critique,critique
+Maison en feu au centre-ville,incendie,faible,moyenne
+"Vol de moto près du rond-point, couteau",vol,moyen,haute
+Agression physique à la station,agression,eleve,critique
+Situation inhabituelle près du rond-point,autre,moyen,basse
+"Coupure d'électricité derrière le stade, enfant",electricite,critique,critique
+Agression physique dans le quartier Kenya,agression,moyen,haute
+Fumée épaisse et flammes à la station,incendie,faible,moyenne
+"Incident divers près de l'école, urgent",autre,critique,critique
+"Un individu a volé un téléphone près du rond-point, à main armée",vol,critique,critique
+Panne de courant dans le quartier Kenya,electricite,faible,basse
+"Agression physique dans le quartier Kenya, blessé",agression,critique,critique
+Lampadaire cassé au centre-ville,infrastructure,faible,basse
+"Agression physique dans une parcelle, enfant",agression,critique,critique
+"Fortes pluies provoquant une inondation dans une parcelle, sang",inondation,critique,critique
+"Poteau électrique endommagé dans le quartier Kenya, feu",electricite,eleve,haute
+Route inondée dans le quartier Kenya,inondation,moyen,moyenne
+"Problème non identifié dans une parcelle, arme",autre,eleve,haute
+Incendie sur l'avenue Kasaï,incendie,moyen,haute
+"Pont abîmé au centre-ville, danger de mort",infrastructure,critique,critique
+"Incident divers dans une parcelle, mort",autre,critique,critique
+Inondation à l'arrêt de bus,inondation,moyen,moyenne
+Incident divers au centre-ville,autre,moyen,basse
+"Maisons envahies par l'eau à l'arrêt de bus, au secours",inondation,eleve,critique
+"Câble électrique tombé à la station, explosion",electricite,eleve,haute
+Bagarre violente à l'arrêt de bus,agression,eleve,critique
+"Collision entre deux véhicules dans une parcelle, urgent",accident,critique,critique
+"Un individu a volé un téléphone près de l'école, sang",vol,critique,critique
+"Un individu a volé un téléphone à la Ruashi, sang",vol,moyen,haute
+Maisons envahies par l'eau à Kamalondo,inondation,eleve,haute
+Coupure d'électricité dans le quartier Kenya,electricite,faible,basse
+Voirie endommagée au centre-ville,infrastructure,faible,basse
+Agression physique à la Ruashi,agression,moyen,haute
+"Maison en feu près du rond-point, arme",incendie,faible,haute
+Pont abîmé sur l'avenue Kasaï,infrastructure,eleve,moyenne
+"Pont abîmé à Kamalondo, sang",infrastructure,critique,critique
+Moto renversée dans le quartier Kenya,accident,moyen,moyenne
+"Voirie endommagée au centre-ville, personne blessée",infrastructure,moyen,moyenne
+"Montée des eaux près du rond-point, sang",inondation,moyen,haute
+"Agression près du rond-point, danger de mort",agression,moyen,critique
+Cambriolage d'une maison dans le quartier Kenya,vol,moyen,moyenne
+Absence de courant depuis des heures au centre-ville,electricite,faible,basse
+Montée des eaux à la station,inondation,faible,basse
+"Feu de brousse sur l'avenue Kasaï, blessé",incendie,critique,critique
+"Incendie à la Ruashi, feu",incendie,moyen,critique
+Voirie endommagée dans une parcelle,infrastructure,faible,basse
+Vol signalé au marché,vol,faible,basse
+Fumée épaisse et flammes à la Ruashi,incendie,moyen,haute
+"Un individu a volé un téléphone à Kamalondo, feu",vol,eleve,critique
+Effraction constatée à la Ruashi,vol,moyen,moyenne
+"Véhicule accidenté à Kamalondo, au secours",accident,moyen,haute
+Moto renversée au marché,accident,critique,critique
+Un individu a volé un téléphone à l'arrêt de bus,vol,faible,basse
+Débordement d'un caniveau au centre-ville,inondation,critique,critique
+"Pont abîmé près du rond-point, danger de mort",infrastructure,faible,basse
+Objet abandonné près de l'école,autre,moyen,basse
+Collision entre deux véhicules près du rond-point,accident,faible,basse
+Maison en feu sur l'avenue Kasaï,incendie,faible,moyenne
+Menaces avec violence à l'arrêt de bus,agression,critique,critique
+Montée des eaux derrière le stade,inondation,faible,basse
+"Transformateur en panne dans une parcelle, danger de mort",electricite,moyen,moyenne
+"Route dégradée à la station, enfant",infrastructure,critique,critique
+Collision entre deux véhicules sur l'avenue Kasaï,accident,eleve,haute
+"Route inondée au centre-ville, explosion",inondation,moyen,haute
+Montée des eaux près de l'école,inondation,critique,critique
+Coupure d'électricité dans une parcelle,electricite,moyen,basse
+"Incident divers derrière le stade, urgent",autre,eleve,haute
+"Effraction constatée derrière le stade, noyade",vol,moyen,haute
+Caniveau bouché sur l'avenue Kasaï,infrastructure,moyen,basse
+"Moto renversée au centre-ville, feu",accident,eleve,critique
+Menaces avec violence derrière le stade,agression,moyen,haute
+"Route inondée au marché, au secours",inondation,eleve,critique
+Accident de circulation à l'arrêt de bus,accident,faible,basse
+Objet abandonné au centre-ville,autre,eleve,moyenne
+Fortes pluies provoquant une inondation près de l'école,inondation,faible,basse
+Voirie endommagée dans le quartier Kenya,infrastructure,critique,haute
+"Effraction constatée à la station, noyade",vol,critique,critique
+Fortes pluies provoquant une inondation près de l'école,inondation,moyen,moyenne
+Montée des eaux au marché,inondation,moyen,moyenne
+Absence de courant depuis des heures à la Ruashi,electricite,faible,basse
+Route inondée près de l'école,inondation,moyen,moyenne
+"Fortes pluies provoquant une inondation à la station, mort",inondation,moyen,haute
+"Débordement d'un caniveau à la station, blessé",inondation,critique,critique
+Agression dans une parcelle,agression,eleve,critique
+Accident impliquant un piéton à la Ruashi,accident,faible,basse
+Fortes pluies provoquant une inondation près de l'école,inondation,critique,critique
+Fumée épaisse et flammes à l'arrêt de bus,incendie,moyen,haute
+Cambriolage d'une maison à la station,vol,moyen,moyenne
+"Absence de courant depuis des heures au centre-ville, à main armée",electricite,moyen,moyenne
+"Vol de moto près de l'école, noyade",vol,critique,critique
+Effraction constatée à Kamalondo,vol,eleve,haute
+"Vol de moto près du rond-point, couteau",vol,eleve,critique
+Route inondée à l'arrêt de bus,inondation,faible,basse
+"Route inondée près de l'école, enfant",inondation,critique,critique
+Vol de moto sur l'avenue Kasaï,vol,eleve,haute
+"Vol à l'arraché dans une parcelle, explosion",vol,critique,critique
+Nuisance signalée à l'arrêt de bus,autre,faible,basse
+Vol signalé à l'arrêt de bus,vol,faible,basse
+Véhicule accidenté près de l'école,accident,critique,critique
+Maisons envahies par l'eau près de l'école,inondation,eleve,haute
+Vol de moto derrière le stade,vol,moyen,moyenne
+"Incendie à la station, mort",incendie,eleve,critique
+Panne de courant près de l'école,electricite,moyen,basse
+"Vol à l'arraché dans une parcelle, sang",vol,eleve,critique
+"Coupure d'électricité à la Ruashi, personne blessée",electricite,moyen,moyenne
+"Route dégradée près du rond-point, noyade",infrastructure,critique,critique
+Transformateur en panne près du rond-point,electricite,critique,haute
+Menaces avec violence à l'arrêt de bus,agression,eleve,critique
+Transformateur en panne près de l'école,electricite,moyen,basse
+Vol à l'arraché à Kamalondo,vol,eleve,haute
+"Poteau électrique endommagé au marché, blessé",electricite,faible,basse
+"Transformateur en panne à l'arrêt de bus, noyade",electricite,critique,critique
+Menaces avec violence au centre-ville,agression,faible,moyenne
+"Absence de courant depuis des heures à l'arrêt de bus, explosion",electricite,eleve,haute
+Collision entre deux véhicules près de l'école,accident,moyen,moyenne
+Agression physique dans le quartier Kenya,agression,moyen,haute
+Poteau électrique endommagé près de l'école,electricite,faible,basse
+Caniveau bouché près du rond-point,infrastructure,faible,basse
+"Problème non identifié près de l'école, sang",autre,moyen,moyenne
+Menaces avec violence à l'arrêt de bus,agression,critique,critique
+Attaque signalée près du rond-point,agression,eleve,critique
+Lampadaire cassé à l'arrêt de bus,infrastructure,faible,basse
+"Collision entre deux véhicules sur l'avenue Kasaï, arme",accident,moyen,haute
+"Absence de courant depuis des heures dans une parcelle, personne blessée",electricite,critique,critique
+"Voirie endommagée derrière le stade, feu",infrastructure,moyen,moyenne
+Objet abandonné dans le quartier Kenya,autre,faible,basse
+Une personne se fait agresser à l'arrêt de bus,agression,moyen,haute
+"Voirie endommagée à la Ruashi, feu",infrastructure,eleve,haute
+"Un individu a volé un téléphone près du rond-point, noyade",vol,critique,critique
+Inondation près du rond-point,inondation,faible,basse
+Nid-de-poule dangereux au marché,infrastructure,faible,basse
+"Attroupement suspect près de l'école, explosion",autre,faible,basse
+Caniveau bouché près de l'école,infrastructure,faible,basse
+"Un individu a volé un téléphone au marché, urgent",vol,critique,critique
+"Véhicule accidenté au marché, au secours",accident,critique,critique
+"Véhicule accidenté à l'arrêt de bus, danger de mort",accident,eleve,critique
+Voirie endommagée dans une parcelle,infrastructure,moyen,basse
+Poteau électrique endommagé au centre-ville,electricite,moyen,basse
+Pont abîmé au centre-ville,infrastructure,moyen,basse
+Inondation près de l'école,inondation,critique,critique
+Fortes pluies provoquant une inondation dans une parcelle,inondation,moyen,moyenne
+"Incident divers derrière le stade, noyade",autre,critique,critique
+"Agression à Kamalondo, sang",agression,critique,critique
+Coupure d'électricité à l'arrêt de bus,electricite,eleve,moyenne
+Agression à la Ruashi,agression,eleve,critique
+"Collision entre deux véhicules près de l'école, urgent",accident,eleve,critique
+"Véhicule accidenté à la Ruashi, urgent",accident,eleve,critique
+"Route inondée derrière le stade, danger de mort",inondation,moyen,haute
+Nuisance signalée à l'arrêt de bus,autre,moyen,basse
+Bagarre violente dans le quartier Kenya,agression,moyen,haute
+Maison en feu à la Ruashi,incendie,eleve,critique
+"Transformateur en panne à Kamalondo, couteau",electricite,critique,critique
+Nuisance signalée au centre-ville,autre,moyen,basse
+"Agression à la Ruashi, au secours",agression,critique,critique
+"Court-circuit ayant provoqué un incendie dans une parcelle, personne blessée",incendie,eleve,critique
+"Absence de courant depuis des heures dans le quartier Kenya, couteau",electricite,moyen,moyenne
+"Bagarre violente à la Ruashi, noyade",agression,moyen,critique
+"Vol signalé à Kamalondo, arme",vol,eleve,critique
+Situation inhabituelle sur l'avenue Kasaï,autre,faible,basse
+Débordement d'un caniveau dans une parcelle,inondation,faible,basse
+Attroupement suspect près du rond-point,autre,faible,basse
+"Un individu a volé un téléphone près de l'école, à main armée",vol,faible,moyenne
+"Lampadaire cassé au centre-ville, noyade",infrastructure,eleve,haute
+"Lampadaire cassé dans une parcelle, au secours",infrastructure,critique,critique
+Maison en feu au centre-ville,incendie,eleve,critique
+"Incendie dans le quartier Kenya, feu",incendie,critique,critique
+Court-circuit ayant provoqué un incendie sur l'avenue Kasaï,incendie,faible,moyenne
+Panne de courant dans le quartier Kenya,electricite,faible,basse
+"Carambolage à la station, sang",accident,eleve,critique
+Débordement d'un caniveau près de l'école,inondation,moyen,moyenne
+Départ de feu derrière le stade,incendie,faible,moyenne
+Vol de moto derrière le stade,vol,faible,basse
+"Carambolage sur l'avenue Kasaï, sang",accident,critique,critique
+"Incendie à la station, à main armée",incendie,critique,critique
+"Incident divers sur l'avenue Kasaï, sang",autre,critique,critique
+Agression à la station,agression,eleve,critique
+Véhicule accidenté dans le quartier Kenya,accident,faible,basse
+Agression à Kamalondo,agression,faible,moyenne
+Inondation au marché,inondation,eleve,haute
+Agression à la Ruashi,agression,faible,moyenne
+"Fumée épaisse et flammes au centre-ville, couteau",incendie,critique,critique
+"Panne de courant à l'arrêt de bus, blessé",electricite,critique,critique
+"Maisons envahies par l'eau au marché, explosion",inondation,critique,critique
+Maisons envahies par l'eau dans une parcelle,inondation,eleve,haute
+Nuisance signalée dans le quartier Kenya,autre,faible,basse
+"Problème non identifié à la station, noyade",autre,critique,critique
+"Problème non identifié dans une parcelle, feu",autre,moyen,moyenne
+"Problème non identifié à l'arrêt de bus, noyade",autre,eleve,haute
+Feu de brousse dans le quartier Kenya,incendie,moyen,haute
+Incendie à la Ruashi,incendie,critique,critique
+"Vol signalé à la Ruashi, blessé",vol,faible,moyenne
+Incident divers à l'arrêt de bus,autre,eleve,moyenne
+"Accident de circulation dans le quartier Kenya, urgent",accident,critique,critique
+"Absence de courant depuis des heures au centre-ville, danger de mort",electricite,moyen,moyenne
+"Menaces avec violence derrière le stade, enfant",agression,critique,critique
+"Maison en feu à l'arrêt de bus, urgent",incendie,critique,critique
+"Menaces avec violence dans le quartier Kenya, personne blessée",agression,moyen,critique
+Accident impliquant un piéton sur l'avenue Kasaï,accident,faible,basse
+Court-circuit ayant provoqué un incendie à l'arrêt de bus,incendie,faible,moyenne
+Absence de courant depuis des heures près du rond-point,electricite,moyen,basse
+Coupure d'électricité dans une parcelle,electricite,critique,haute
+"Bagarre violente sur l'avenue Kasaï, mort",agression,eleve,critique
+Absence de courant depuis des heures dans le quartier Kenya,electricite,eleve,moyenne
+Caniveau bouché à Kamalondo,infrastructure,faible,basse
+"Pont abîmé dans une parcelle, danger de mort",infrastructure,moyen,moyenne
+"Situation inhabituelle dans une parcelle, enfant",autre,moyen,moyenne
+Poteau électrique endommagé à la Ruashi,electricite,moyen,basse
+Départ de feu derrière le stade,incendie,moyen,haute
+"Court-circuit ayant provoqué un incendie sur l'avenue Kasaï, mort",incendie,critique,critique
+Bagarre violente derrière le stade,agression,faible,moyenne
+Attroupement suspect près de l'école,autre,faible,basse
+Lampadaire cassé dans le quartier Kenya,infrastructure,eleve,moyenne
+Maison en feu à Kamalondo,incendie,moyen,haute
+Cambriolage d'une maison à la station,vol,faible,basse
+"Nuisance signalée dans une parcelle, personne blessée",autre,critique,critique
+Fumée épaisse et flammes près du rond-point,incendie,moyen,haute
+Collision entre deux véhicules à l'arrêt de bus,accident,faible,basse
+"Panne de courant à l'arrêt de bus, à main armée",electricite,critique,critique
+Débordement d'un caniveau près du rond-point,inondation,eleve,haute
+Vol de moto à la Ruashi,vol,moyen,moyenne
+Accident de circulation à Kamalondo,accident,faible,basse
+"Montée des eaux dans le quartier Kenya, feu",inondation,critique,critique
+Moto renversée dans une parcelle,accident,faible,basse
+Vol à l'arraché à la Ruashi,vol,moyen,moyenne
+Route dégradée à Kamalondo,infrastructure,faible,basse
+Moto renversée à la Ruashi,accident,eleve,haute
+Voirie endommagée dans le quartier Kenya,infrastructure,eleve,moyenne
+"Objet abandonné dans le quartier Kenya, feu",autre,eleve,haute
+Une personne se fait agresser à Kamalondo,agression,faible,moyenne
+"Cambriolage d'une maison près de l'école, feu",vol,eleve,critique
+Objet abandonné dans une parcelle,autre,eleve,moyenne
+"Maison en feu à la Ruashi, enfant",incendie,moyen,critique
+Feu de brousse à la station,incendie,eleve,critique
+Feu de brousse près du rond-point,incendie,moyen,haute
+Collision entre deux véhicules près du rond-point,accident,moyen,moyenne
+Nuisance signalée au centre-ville,autre,eleve,moyenne
+Coupure d'électricité derrière le stade,electricite,eleve,moyenne
+Coupure d'électricité au centre-ville,electricite,eleve,moyenne
+Incident divers sur l'avenue Kasaï,autre,eleve,moyenne
+"Débordement d'un caniveau à l'arrêt de bus, urgent",inondation,eleve,critique
+"Menaces avec violence à la Ruashi, explosion",agression,critique,critique
+Nid-de-poule dangereux derrière le stade,infrastructure,moyen,basse
+"Effraction constatée à l'arrêt de bus, sang",vol,faible,moyenne

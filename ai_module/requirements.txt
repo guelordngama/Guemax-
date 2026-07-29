@@ -1,0 +1,5 @@
+# Dépendances du module d'IA (classification de priorité par SVM).
+# Versions alignées sur celles ayant servi à entraîner model_svm.joblib.
+scikit-learn==1.9.0
+pandas==3.0.5
+joblib==1.5.3
