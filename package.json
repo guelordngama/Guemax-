@@ -6,7 +6,9 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "node --watch server/index.js"
+    "dev": "node --watch server/index.js",
+    "check": "node --check server/index.js && node --check server/store.js && node --check server/config.js",
+    "test": "node --test"
   },
   "keywords": [
     "safecity",

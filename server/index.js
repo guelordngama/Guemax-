@@ -27,7 +27,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const UPLOADS_DIR = path.join(PUBLIC_DIR, 'uploads');
-const DATA_FILE = path.join(ROOT, 'data', 'incidents.json');
+const DATA_FILE = process.env.DATA_FILE || path.join(ROOT, 'data', 'incidents.json');
 const PORT = process.env.PORT || 3000;
 
 const app = express();
