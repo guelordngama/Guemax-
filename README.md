@@ -1,138 +1,165 @@
 # 🚨 SafeCity Lubumbashi
 
-**Application de signalement d'incidents avec géolocalisation en temps réel — une technologie au service de la sécurité de notre communauté. 📍💻**
+**Système d'alerte et de signalement d'incidents avec géolocalisation en temps réel — la technologie au service de la sécurité de notre communauté. 📍💻**
 
-SafeCity Lubumbashi permet à chaque citoyen de signaler en quelques secondes un
-incident de sécurité (vol, agression, accident, incendie, inondation, coupure
-d'électricité, problème de voirie…) et de le voir apparaître **instantanément**
-sur une carte partagée par toute la communauté.
+SafeCity Lubumbashi met en relation les **citoyens** et les **services de la mairie** :
+un citoyen signale une alerte depuis un site web (avec sa position GPS), et cette
+alerte apparaît **instantanément** sur le tableau de bord de la mairie (application
+de bureau) ainsi que sur une carte partagée.
 
----
-
-## ✨ Fonctionnalités
-
-- 🗺️ **Carte interactive** centrée sur Lubumbashi (Leaflet + OpenStreetMap, sans clé API).
-- 📡 **Géolocalisation en temps réel** : « Ma position » via le GPS du navigateur, ou clic sur la carte.
-- ⚡ **Diffusion instantanée** : chaque nouveau signalement apparaît en direct chez tous les utilisateurs connectés (Socket.io).
-- 🏷️ **Catégorisation & gravité** : 8 catégories d'incidents, 4 niveaux de gravité.
-- 📷 **Photo facultative** jointe au signalement.
-- ✔️ **Confirmation communautaire** (« Je confirme ») et suivi du **statut** (actif / vérifié / résolu).
-- 🔎 **Filtrage** par catégorie et **fil des incidents récents**.
-- 📊 **Tableau de bord** : total, incidents actifs, résolus, présence en ligne.
-- 📱 **Responsive** (mobile / tablette / bureau) et **thème clair/sombre** automatique.
+```
+CITOYEN (site web) → GPS + formulaire → API Flask → Base de données
+                                             ↓
+                                        Socket.IO (temps réel)
+                                             ↓
+                              MAIRIE (app Tkinter) → carte Leaflet → intervention
+```
 
 ---
 
-## 🛠️ Stack technique
+## 🧩 Architecture
 
-| Couche      | Technologie |
-|-------------|-------------|
-| Backend     | Node.js, Express, Socket.io |
-| Persistance | Fichier JSON atomique (aucune dépendance native, démarre partout) |
-| Frontend    | HTML/CSS/JavaScript natif, Leaflet |
-| Temps réel  | WebSockets via Socket.io |
+| Composant | Rôle | Technologie |
+|-----------|------|-------------|
+| **backend/** | API REST + temps réel + base de données + IA | Python, Flask, Flask-SocketIO, SQLAlchemy |
+| **web_citizen/** | Site citoyen : signalement + carte publique | HTML/CSS/JS, Leaflet |
+| **admin_tkinter/** | Poste de la mairie : surveillance temps réel | Python, Tkinter |
+| **database/** | Schéma et données de référence | SQL (SQLite par défaut) |
+| **tests/** | Tests automatisés | pytest |
 
-Aucune base de données externe ni clé d'API n'est requise : l'application
-démarre avec un simple `npm install && npm start`.
+> Le module d'IA (`backend/utils/classification_ai.py`) fournit actuellement une
+> **classification de priorité par règles** (placeholder). Le vrai modèle **SVM**
+> entraîné (`ai_module/`), la documentation (`docs/`) et le déploiement
+> (`deployment/`) sont prévus dans les étapes suivantes ; l'interface du
+> classifieur est déjà stable pour un remplacement transparent.
 
 ---
 
 ## 🚀 Démarrage rapide
 
-**Prérequis :** Node.js ≥ 18.
+**Prérequis :** Python ≥ 3.10.
 
 ```bash
-# 1. Installer les dépendances
-npm install
+# 1. Environnement virtuel + dépendances
+python -m venv .venv
+source .venv/bin/activate        # Windows : .venv\Scripts\activate
+pip install -r requirements.txt
 
-# 2. Lancer le serveur
-npm start
+# 2. Lancer le backend (API + temps réel + site citoyen)
+cd backend
+python app.py
+#   → Site citoyen : http://localhost:5000/
+#   → Carte mairie : http://localhost:5000/admin/map
+#   → API          : http://localhost:5000/api/
 
-# 3. Ouvrir l'application
-#    http://localhost:3000
+# 3. Lancer l'application de bureau de la mairie (dans un autre terminal)
+cd admin_tkinter
+python main.py
+#   Connexion par défaut :  admin  /  admin123
 ```
 
-En développement, `npm run dev` recharge automatiquement le serveur à chaque
-modification.
-
-Le port peut être personnalisé : `PORT=8080 npm start`.
+> ⚠️ Le compte administrateur par défaut (`admin` / `admin123`) est destiné au
+> développement. Définissez `ADMIN_USERNAME` / `ADMIN_PASSWORD` (et `JWT_SECRET`,
+> `SECRET_KEY`) via des variables d'environnement en production.
 
 ---
 
-## 📁 Structure du projet
+## ✨ Fonctionnalités (cœur fonctionnel)
+
+**Site citoyen**
+- 🗺️ Carte des alertes centrée sur Lubumbashi (Leaflet + OpenStreetMap, sans clé API)
+- 📡 Signalement par **position GPS** ou clic sur la carte
+- 🏷️ 8 catégories d'incidents, 4 niveaux de gravité, photo facultative
+- ⚡ Mise à jour **temps réel** de la carte et du fil des alertes
+- ✔️ Confirmation communautaire d'une alerte
+
+**Poste mairie (Tkinter)**
+- 🔐 Connexion sécurisée (JWT)
+- 📋 Tableau des alertes trié par priorité, réception **temps réel**
+- 🔄 Traitement : marquer une alerte *vérifiée* / *résolue*
+- 📊 Statistiques (par statut, catégorie, priorité)
+- 🗺️ Carte live ouverte dans le navigateur
+
+**Backend**
+- 🧠 Classification automatique de la **priorité** des alertes (placeholder IA)
+- 🔒 Validation stricte, hachage des mots de passe, authentification JWT
+
+---
+
+## 📁 Arborescence
 
 ```
-.
-├── server/
-│   ├── index.js      # Serveur Express + API REST + Socket.io
-│   ├── store.js      # Persistance JSON (écriture atomique)
-│   └── config.js     # Constantes partagées (catégories, gravités, centre carte)
-├── public/
-│   ├── index.html    # Interface
-│   ├── css/styles.css
-│   ├── js/app.js     # Logique cliente (carte, temps réel, formulaire)
-│   └── uploads/      # Photos jointes (générées à l'exécution)
-├── data/
-│   └── incidents.json # Base de données fichier (générée à l'exécution)
-└── package.json
+security-alert-system/
+├── backend/
+│   ├── app.py              # Application Flask (API + Socket.IO + fichiers statiques)
+│   ├── config.py           # Configuration (env, base, secrets)
+│   ├── models.py           # Modèles : User, Alert, Agent, Intervention
+│   ├── database.py         # Init SQLAlchemy + données de départ
+│   ├── socket_events.py    # Événements temps réel
+│   ├── routes/             # auth.py · alerts.py · users.py
+│   ├── utils/              # security.py · classification_ai.py · helpers.py
+│   └── requirements.txt
+├── web_citizen/
+│   ├── index.html          # Carte publique temps réel
+│   ├── alert.html          # Formulaire de signalement
+│   ├── js/                 # gps.js · alerts.js · leaflet_map.js
+│   ├── leaflet/map_config.js
+│   └── assets/css/style.css
+├── admin_tkinter/
+│   ├── main.py             # Point d'entrée du poste mairie
+│   ├── ui/                 # login_window · dashboard · alerts_view · stats_view
+│   ├── services/           # api_client · socket_client · database_local
+│   └── map/leaflet_view.html
+├── database/               # schema.sql · seed_data.sql
+├── tests/                  # test_api.py · test_alerts.py · test_socket.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
 ## 🔌 API REST
 
-| Méthode | Route | Description |
-|---------|-------|-------------|
-| `GET`   | `/api/config` | Centre de la carte, catégories et gravités |
-| `GET`   | `/api/incidents` | Liste des incidents (du plus récent au plus ancien) |
-| `GET`   | `/api/stats` | Statistiques agrégées |
-| `POST`  | `/api/incidents` | Créer un incident |
-| `POST`  | `/api/incidents/:id/confirm` | Ajouter une confirmation |
-| `PATCH` | `/api/incidents/:id/status` | Changer le statut (`actif`/`verifie`/`resolu`) |
+| Méthode | Route | Accès | Description |
+|---------|-------|-------|-------------|
+| `GET`   | `/api/config` | public | Centre carte, catégories, gravités |
+| `GET`   | `/api/health` | public | Sonde de disponibilité |
+| `POST`  | `/api/auth/login` | public | Connexion (renvoie un JWT) |
+| `POST`  | `/api/auth/register` | admin | Créer un compte agent/admin |
+| `GET`   | `/api/alerts` | public | Liste des alertes (filtres `status`, `category`) |
+| `POST`  | `/api/alerts` | public | Créer une alerte (citoyen) |
+| `POST`  | `/api/alerts/<id>/confirm` | public | Confirmer une alerte |
+| `PATCH` | `/api/alerts/<id>/status` | public* | Changer le statut |
+| `GET`   | `/api/alerts/stats/summary` | public | Statistiques agrégées |
+| `GET`   | `/api/users` | admin | Liste des utilisateurs |
+| `GET`/`POST` | `/api/users/agents` | admin | Gestion des agents |
 
-**Exemple — créer un incident :**
+**Événements Socket.IO :** `alert:new`, `alert:update`, `presence`.
+
+---
+
+## 🧪 Tests
 
 ```bash
-curl -X POST http://localhost:3000/api/incidents \
-  -H "Content-Type: application/json" \
-  -d '{
-    "category": "vol",
-    "severity": "eleve",
-    "description": "Vol de moto signalé près du marché",
-    "lat": -11.6647,
-    "lng": 27.4794
-  }'
+pytest -q
 ```
 
-### Événements temps réel (Socket.io)
-
-| Événement | Charge utile | Sens |
-|-----------|--------------|------|
-| `incident:new` | incident | serveur → clients |
-| `incident:update` | incident | serveur → clients |
-| `presence` | `{ online }` | serveur → clients |
+Les tests couvrent l'API (santé, config, authentification), le cycle de vie des
+alertes (création, validation, confirmation, statut, statistiques, priorité) et
+le canal temps réel Socket.IO. La CI (GitHub Actions) les exécute sur Python
+3.10, 3.11 et 3.12.
 
 ---
 
-## 🔒 Sécurité & validation
+## 🗺️ Étapes suivantes (déjà prévues dans la structure)
 
-- Validation stricte côté serveur (catégorie, gravité, longueur de description, bornes des coordonnées).
-- Échappement HTML de tout contenu utilisateur affiché sur la carte et dans le fil.
-- Photos limitées à 4 Mo et aux formats image (`png`, `jpg`, `webp`).
-- Écriture disque atomique (fichier temporaire + `rename`) pour éviter la corruption des données.
-
----
-
-## 🗺️ Pistes d'évolution
-
-- Authentification des citoyens et des services d'intervention.
-- Notifications push / SMS pour les incidents critiques d'un quartier.
-- Zones de chaleur (heatmap) et analyses statistiques par commune.
-- Application mobile native et mode hors-ligne.
-- Tableau de bord dédié aux autorités locales.
+- 🧠 **ai_module/** : entraînement du modèle **SVM** et intégration réelle.
+- 📄 **docs/** : mémoire, présentation mairie, diagrammes UML et d'architecture.
+- ☁️ **deployment/** : Nginx, Gunicorn, HTTPS/SSL, script d'installation serveur.
+- 👮 Gestion des **interventions** et affectation des **agents** aux alertes.
 
 ---
 
 ## 📜 Licence
 
-MIT — libre d'utilisation au service de la sécurité de la communauté de Lubumbashi.
+MIT — au service de la sécurité de la communauté de Lubumbashi.

@@ -1,23 +1,32 @@
-# Dependances
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
 
-# Donnees generees a l'execution
-data/incidents.json
-public/uploads/*
-!public/uploads/.gitkeep
+# Base de données et cache (générés à l'exécution)
+database/*.db
+database/security_alert.db
+admin_tkinter/cache.db
+*.sqlite3
+
+# Photos jointes uploadées (on conserve le dossier, pas son contenu)
+web_citizen/assets/images/uploads/*
+!web_citizen/assets/images/uploads/.gitkeep
 
 # Environnement
 .env
 .env.local
 
-# Systeme
+# Système / éditeurs
 .DS_Store
 Thumbs.db
-
-# Editeurs
 .vscode/
 .idea/
 *.swp
+
+# Logs
+logs/*.log
