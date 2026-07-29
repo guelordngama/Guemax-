@@ -53,5 +53,25 @@ class ApiClient:
 
     # --- Agents ------------------------------------------------------------
     def list_agents(self):
-        res = requests.get(f"{self.base}/api/users/agents", headers=self._headers(), timeout=10)
+        res = requests.get(f"{self.base}/api/agents", headers=self._headers(), timeout=10)
         return res.json() if res.status_code == 200 else []
+
+    def agents_summary(self):
+        res = requests.get(f"{self.base}/api/agents/summary", headers=self._headers(), timeout=10)
+        return res.json() if res.status_code == 200 else {"byStatus": {}, "total": 0, "leaderboard": []}
+
+    def set_agent_status(self, agent_id, status):
+        res = requests.patch(f"{self.base}/api/agents/{agent_id}/status",
+                             json={"status": status}, headers=self._headers(), timeout=10)
+        return res.json()
+
+    def award_points(self, agent_id, points, reason="", lieu=""):
+        res = requests.post(f"{self.base}/api/agents/{agent_id}/points",
+                            json={"points": points, "reason": reason, "lieu": lieu},
+                            headers=self._headers(), timeout=10)
+        return res.json()
+
+    def create_intervention(self, agent_id, payload):
+        res = requests.post(f"{self.base}/api/agents/{agent_id}/interventions",
+                            json=payload, headers=self._headers(), timeout=10)
+        return res.json()

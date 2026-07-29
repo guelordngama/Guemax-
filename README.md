@@ -84,6 +84,7 @@ python main.py
 - 🔐 Connexion sécurisée (JWT)
 - 📋 Tableau des alertes trié par priorité, filtres statut/catégorie, réception **temps réel**
 - 🔄 Traitement : marquer une alerte *vérifiée* / *résolue*
+- 👮 **Gestion des agents** : statuts temps réel (actif / en mission / absent / hors ligne), **points de performance** (barre par agent, conservés d'une année à l'autre), interventions avec **attribution automatique de points**
 - 📊 Statistiques (par statut, catégorie, priorité)
 - 🗺️ Carte live ouverte dans le navigateur
 
@@ -142,7 +143,12 @@ security-alert-system/
 | `PATCH` | `/api/alerts/<id>/status` | public* | Changer le statut |
 | `GET`   | `/api/alerts/stats/summary` | public | Statistiques agrégées |
 | `GET`   | `/api/users` | admin | Liste des utilisateurs |
-| `GET`/`POST` | `/api/users/agents` | admin | Gestion des agents |
+| `GET`/`POST` | `/api/agents` | admin | Lister / créer des agents |
+| `GET`   | `/api/agents/summary` | admin | Effectifs par statut + classement |
+| `PATCH` | `/api/agents/<id>/status` | admin | Changer le statut d'un agent |
+| `GET`/`POST` | `/api/agents/<id>/points` | admin | Points de performance (historique / attribution) |
+| `GET`/`POST` | `/api/agents/<id>/interventions` | admin | Interventions (auto-points au résultat) |
+| `POST`  | `/api/auth/forgot` · `/reset` | public | Mot de passe oublié / réinitialisation |
 
 **Événements Socket.IO :** `alert:new`, `alert:update`, `presence`.
 

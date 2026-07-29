@@ -29,6 +29,12 @@
         <div class="field"><label>Nom *</label><input id="s-nom" required /></div>
         <div class="field"><label>Post-nom</label><input id="s-postnom" /></div>
       </div>
+      <div class="grid2">
+        <div class="field"><label>Prénom</label><input id="s-prenom" /></div>
+        <div class="field"><label>Sexe</label>
+          <select id="s-sexe"><option value="">—</option><option value="M">Masculin</option><option value="F">Féminin</option><option value="Autre">Autre</option></select>
+        </div>
+      </div>
       <div class="field"><label>Nom d'utilisateur *</label><input id="s-username" required /></div>
       <div class="grid2">
         <div class="field"><label>Date de naissance</label><input id="s-dob" type="date" /></div>
@@ -36,8 +42,13 @@
       </div>
       <div class="grid2">
         <div class="field"><label>Ville *</label><input id="s-ville" value="Lubumbashi" required /></div>
-        <div class="field"><label>Adresse Gmail *</label><input id="s-email" type="email" placeholder="exemple@gmail.com" required /></div>
+        <div class="field"><label>Commune *</label><input id="s-commune" placeholder="ex. Lubumbashi, Kampemba…" required /></div>
       </div>
+      <div class="grid2">
+        <div class="field"><label>Quartier</label><input id="s-quartier" /></div>
+        <div class="field"><label>Téléphone</label><input id="s-tel" type="tel" placeholder="facultatif" /></div>
+      </div>
+      <div class="field"><label>Adresse Gmail *</label><input id="s-email" type="email" placeholder="exemple@gmail.com" required /></div>
       <div class="field"><label>Mot de passe *</label><input id="s-password" type="password" required /></div>
       <button type="submit" class="btn btn-primary btn-lg" style="width:100%">S'inscrire</button>
     </form>
@@ -47,6 +58,22 @@
       <div class="field"><label>Nom d'utilisateur</label><input id="l-username" required /></div>
       <div class="field"><label>Mot de passe</label><input id="l-password" type="password" required /></div>
       <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Se connecter</button>
+      <button type="button" class="btn-link" id="l-forgot">Mot de passe oublié ?</button>
+    </form>
+
+    <!-- Mot de passe oublié : demande de code -->
+    <form id="forgot-form" class="auth-form" hidden>
+      <p class="verify-intro">Saisissez votre nom d'utilisateur ou e-mail. Un code de réinitialisation vous sera envoyé.</p>
+      <div class="field"><label>Nom d'utilisateur ou e-mail</label><input id="fg-ident" required /></div>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Envoyer le code</button>
+    </form>
+
+    <!-- Réinitialisation -->
+    <form id="reset-form" class="auth-form" hidden>
+      <div class="dev-code" id="reset-dev-code" hidden></div>
+      <div class="field"><label>Code reçu</label><input id="rs-code" inputmode="numeric" maxlength="6" placeholder="000000" required /></div>
+      <div class="field"><label>Nouveau mot de passe</label><input id="rs-password" type="password" required /></div>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Réinitialiser</button>
     </form>
 
     <!-- Validation par code -->

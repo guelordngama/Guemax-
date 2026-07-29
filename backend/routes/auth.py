@@ -55,8 +55,13 @@ def signup():
     password = data.get("password") or ""
     nom = (data.get("nom") or "").strip()
     post_nom = (data.get("postNom") or data.get("post_nom") or "").strip()
+    prenom = (data.get("prenom") or "").strip()
+    sexe = (data.get("sexe") or "").strip()
     ville = (data.get("ville") or "").strip()
+    commune = (data.get("commune") or "").strip()
+    quartier = (data.get("quartier") or "").strip()
     nationalite = (data.get("nationalite") or "").strip()
+    telephone = (data.get("telephone") or "").strip()
     date_naissance = (data.get("dateNaissance") or data.get("date_naissance") or "").strip()
 
     errors = []
@@ -82,8 +87,13 @@ def signup():
         role="citizen",
         nom=nom,
         post_nom=post_nom or None,
+        prenom=prenom or None,
+        sexe=sexe or None,
         ville=ville,
+        commune=commune or None,
+        quartier=quartier or None,
         nationalite=nationalite or None,
+        telephone=telephone or None,
         date_naissance=date_naissance or None,
         is_verified=False,
     )
@@ -134,6 +144,48 @@ def resend():
         return jsonify({"message": "Compte déjà validé."})
     code = _issue_code(user)
     return jsonify({"message": "Nouveau code envoyé.", **_dev_code_payload(code)})
+
+
+# --- Mot de passe oublié ----------------------------------------------------
+
+@auth_bp.post("/forgot")
+def forgot():
+    """Demande de réinitialisation : envoie un code par e-mail (mode démo)."""
+    data = request.get_json(silent=True) or {}
+    ident = (data.get("username") or data.get("email") or "").strip()
+    user = User.query.filter(
+        (User.username == ident) | (User.email == ident)
+    ).first()
+    # Réponse volontairement neutre pour ne pas divulguer l'existence du compte.
+    if not user:
+        return jsonify({"message": "Si le compte existe, un code a été envoyé."})
+    code = _issue_code(user)
+    return jsonify({"message": "Si le compte existe, un code a été envoyé.",
+                    "username": user.username, **_dev_code_payload(code)})
+
+
+@auth_bp.post("/reset")
+def reset():
+    """Réinitialise le mot de passe à l'aide du code reçu."""
+    data = request.get_json(silent=True) or {}
+    username = (data.get("username") or "").strip()
+    code = (data.get("code") or "").strip()
+    new_password = data.get("password") or ""
+
+    user = User.query.filter_by(username=username).first()
+    if not user or not user.verification_code or user.verification_code != code:
+        return jsonify({"errors": ["Code de réinitialisation incorrect."]}), 400
+    if user.verification_expires and datetime.utcnow() > user.verification_expires:
+        return jsonify({"errors": ["Code expiré. Veuillez recommencer."]}), 400
+    if len(new_password) < 6:
+        return jsonify({"errors": ["Le mot de passe doit contenir au moins 6 caractères."]}), 400
+
+    user.password_hash = hash_password(new_password)
+    user.verification_code = None
+    user.verification_expires = None
+    user.is_verified = True  # la maîtrise de l'e-mail est prouvée
+    db.session.commit()
+    return jsonify({"token": generate_token(user), "user": user.to_dict()})
 
 
 # --- Connexion --------------------------------------------------------------

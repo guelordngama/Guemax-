@@ -12,6 +12,7 @@ from tkinter import ttk
 from ui.theme import apply_theme
 from ui.alerts_view import AlertsView
 from ui.stats_view import StatsView
+from ui.agents_view import AgentsView
 from services.socket_client import SocketClient
 
 
@@ -108,8 +109,10 @@ class Dashboard:
         notebook = ttk.Notebook(self.root)
         notebook.pack(fill="both", expand=True, padx=14, pady=(6, 8))
         self.alerts_view = AlertsView(notebook, self.api, self.c, self.f)
+        self.agents_view = AgentsView(notebook, self.api, self.c, self.f)
         self.stats_view = StatsView(notebook, self.api, self.c, self.f)
         notebook.add(self.alerts_view, text="  🚨  Alertes  ")
+        notebook.add(self.agents_view, text="  👮  Agents  ")
         notebook.add(self.stats_view, text="  📊  Statistiques  ")
 
     def _build_statusbar(self):
@@ -133,6 +136,7 @@ class Dashboard:
 
     def _load_all(self):
         self.alerts_view.load()
+        self.agents_view.load()
         self.stats_view.load()
         self._refresh_kpis()
         self.status_var.set(f"Données actualisées à {time.strftime('%H:%M:%S')}")

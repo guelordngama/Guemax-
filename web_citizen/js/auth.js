@@ -5,9 +5,13 @@
   if (SC.token()) { window.location.href = 'index.html'; return; }
 
   const $ = (id) => document.getElementById(id);
-  const forms = { signup: $('signup-form'), login: $('login-form'), verify: $('verify-form') };
+  const forms = {
+    signup: $('signup-form'), login: $('login-form'), verify: $('verify-form'),
+    forgot: $('forgot-form'), reset: $('reset-form'),
+  };
   const errorBox = $('auth-error');
   const infoBox = $('auth-info');
+  const tabs = document.querySelector('.auth-tabs');
   let pendingUsername = null;
 
   function showError(msg) { errorBox.textContent = msg; errorBox.hidden = false; infoBox.hidden = true; }
@@ -19,6 +23,8 @@
     Object.entries(forms).forEach(([k, f]) => { f.hidden = k !== mode; });
     document.querySelectorAll('.auth-tab').forEach((t) =>
       t.classList.toggle('active', t.dataset.mode === mode));
+    // Les onglets ne concernent que inscription/connexion.
+    tabs.style.display = (mode === 'signup' || mode === 'login') ? '' : 'none';
   }
 
   document.querySelectorAll('.auth-tab').forEach((tab) =>
@@ -27,7 +33,6 @@
   function goToVerify(username, devCode) {
     pendingUsername = username;
     show('verify');
-    document.querySelector('.auth-tabs').style.display = 'none';
     const dev = $('dev-code');
     if (devCode) {
       dev.hidden = false;
@@ -51,10 +56,15 @@
     const payload = {
       nom: $('s-nom').value.trim(),
       postNom: $('s-postnom').value.trim(),
+      prenom: $('s-prenom').value.trim(),
+      sexe: $('s-sexe').value,
       username: $('s-username').value.trim(),
       dateNaissance: $('s-dob').value,
       nationalite: $('s-nat').value.trim(),
       ville: $('s-ville').value.trim(),
+      commune: $('s-commune').value.trim(),
+      quartier: $('s-quartier').value.trim(),
+      telephone: $('s-tel').value.trim(),
       email: $('s-email').value.trim(),
       password: $('s-password').value,
     };
@@ -100,5 +110,33 @@
       $('dev-code').hidden = false;
       $('dev-code').innerHTML = `Mode démo — votre code : <strong>${SC.escapeHtml(data.devCode)}</strong>`;
     }
+  });
+
+  // --- Mot de passe oublié -------------------------------------------------
+  $('l-forgot').addEventListener('click', () => show('forgot'));
+
+  forms.forgot.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearMsg();
+    const ident = $('fg-ident').value.trim();
+    const { data } = await postJson('/api/auth/forgot', { username: ident, email: ident });
+    pendingUsername = data.username || ident;
+    show('reset');
+    showInfo(data.message || 'Si le compte existe, un code a été envoyé.');
+    if (data.devCode) {
+      $('reset-dev-code').hidden = false;
+      $('reset-dev-code').innerHTML = `Mode démo — votre code : <strong>${SC.escapeHtml(data.devCode)}</strong>`;
+    }
+  });
+
+  forms.reset.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearMsg();
+    const { res, data } = await postJson('/api/auth/reset', {
+      username: pendingUsername, code: $('rs-code').value.trim(), password: $('rs-password').value,
+    });
+    if (!res.ok) { showError((data.errors || ['Code incorrect.']).join(' ')); return; }
+    SC.setSession(data.token, data.user);
+    window.location.href = 'index.html';
   });
 })();

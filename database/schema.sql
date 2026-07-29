@@ -12,9 +12,14 @@ CREATE TABLE IF NOT EXISTS users (
     role                 VARCHAR(20)  DEFAULT 'citizen',   -- citizen | admin | agent
     nom                  VARCHAR(80),
     post_nom             VARCHAR(80),
+    prenom               VARCHAR(80),
+    sexe                 VARCHAR(10),
     date_naissance       VARCHAR(20),
     ville                VARCHAR(80),
+    commune              VARCHAR(80),
+    quartier             VARCHAR(80),
     nationalite          VARCHAR(80),
+    telephone            VARCHAR(30),
     is_verified          BOOLEAN      DEFAULT 0,
     verification_code    VARCHAR(10),
     verification_expires TIMESTAMP,
@@ -42,19 +47,35 @@ CREATE TABLE IF NOT EXISTS alerts (
 CREATE TABLE IF NOT EXISTS agents (
     id         INTEGER PRIMARY KEY AUTOINCREMENT,
     name       VARCHAR(120) NOT NULL,
+    matricule  VARCHAR(30),
+    grade      VARCHAR(60),
     phone      VARCHAR(30),
-    status     VARCHAR(20)  DEFAULT 'disponible',   -- disponible | en_intervention
+    status     VARCHAR(20)  DEFAULT 'disponible',   -- disponible | en_mission | absent | hors_ligne
     created_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS interventions (
+CREATE TABLE IF NOT EXISTS agent_points (
     id         INTEGER PRIMARY KEY AUTOINCREMENT,
-    alert_id   INTEGER NOT NULL REFERENCES alerts(id),
-    agent_id   INTEGER REFERENCES agents(id),
-    status     VARCHAR(20) DEFAULT 'en_cours',      -- en_cours | terminee | annulee
-    notes      TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    agent_id   INTEGER NOT NULL REFERENCES agents(id),
+    year       INTEGER NOT NULL,                    -- points conservés d'une année à l'autre
+    points     INTEGER DEFAULT 0,
+    reason     VARCHAR(200),
+    lieu       VARCHAR(120),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS interventions (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    alert_id      INTEGER REFERENCES alerts(id),
+    agent_id      INTEGER REFERENCES agents(id),
+    status        VARCHAR(20) DEFAULT 'en_cours',   -- en_cours | terminee | annulee
+    lieu          VARCHAR(120),
+    type_mission  VARCHAR(60),
+    duree_minutes INTEGER,
+    resultat      VARCHAR(20),                       -- reussie | partielle | echouee
+    notes         TEXT,
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_alerts_status   ON alerts(status);

@@ -37,12 +37,32 @@ def seed(app):
         )
 
     if Agent.query.count() == 0:
-        db.session.add_all(
-            [
-                Agent(name="Patrouille Centre-ville", phone="+243000000001"),
-                Agent(name="Patrouille Kenya", phone="+243000000002"),
-                Agent(name="Équipe intervention rapide", phone="+243000000003"),
-            ]
-        )
+        from models import AgentPoints
+
+        agents = [
+            Agent(name="Patrouille Centre-ville", matricule="AG-001", grade="Brigadier",
+                  phone="+243000000001", status="disponible"),
+            Agent(name="Patrouille Kenya", matricule="AG-002", grade="Agent",
+                  phone="+243000000002", status="en_mission"),
+            Agent(name="Équipe intervention rapide", matricule="AG-003", grade="Sergent",
+                  phone="+243000000003", status="disponible"),
+            Agent(name="Patrouille Kampemba", matricule="AG-004", grade="Agent",
+                  phone="+243000000004", status="absent"),
+            Agent(name="Unité Ruashi", matricule="AG-005", grade="Agent",
+                  phone="+243000000005", status="hors_ligne"),
+        ]
+        db.session.add_all(agents)
+        db.session.flush()
+        # Quelques points de démonstration (année courante et précédente).
+        from datetime import datetime
+        year = datetime.utcnow().year
+        demo_points = [
+            (agents[0], year, 45), (agents[0], year - 1, 30),
+            (agents[1], year, 28), (agents[2], year, 62), (agents[2], year - 1, 40),
+            (agents[3], year, 12),
+        ]
+        for agent, yr, pts in demo_points:
+            db.session.add(AgentPoints(agent_id=agent.id, year=yr, points=pts,
+                                       reason="Performances cumulées"))
 
     db.session.commit()

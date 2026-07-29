@@ -2,7 +2,7 @@
 
 from flask import Blueprint, current_app, jsonify, request
 
-from config import LUBUMBASHI_BOUNDS
+from config import LUBUMBASHI_BOUNDS, in_lubumbashi
 from database import db
 from models import Alert
 from socket_events import emit_alert_update, emit_new_alert
@@ -52,6 +52,13 @@ def create_alert():
     errors, clean = validate_alert(data)
     if errors:
         return jsonify({"errors": errors}), 400
+
+    # La position doit se trouver dans la ville de Lubumbashi.
+    if not in_lubumbashi(clean["lat"], clean["lng"]):
+        return jsonify({
+            "errors": ["Position hors de Lubumbashi : seules les alertes de la ville sont acceptées."],
+            "outOfBounds": True,
+        }), 422
 
     photo = save_photo(
         data.get("photo"),

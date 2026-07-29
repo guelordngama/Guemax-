@@ -21,9 +21,14 @@ class User(db.Model):
     # Profil citoyen
     nom = db.Column(db.String(80))
     post_nom = db.Column(db.String(80))
+    prenom = db.Column(db.String(80))
+    sexe = db.Column(db.String(10))          # M | F | Autre
     date_naissance = db.Column(db.String(20))
     ville = db.Column(db.String(80))
+    commune = db.Column(db.String(80))
+    quartier = db.Column(db.String(80))
     nationalite = db.Column(db.String(80))
+    telephone = db.Column(db.String(30))
 
     # Validation du compte par code
     is_verified = db.Column(db.Boolean, default=False)
@@ -40,8 +45,13 @@ class User(db.Model):
             "role": self.role,
             "nom": self.nom,
             "postNom": self.post_nom,
+            "prenom": self.prenom,
+            "sexe": self.sexe,
             "ville": self.ville,
+            "commune": self.commune,
+            "quartier": self.quartier,
             "nationalite": self.nationalite,
+            "telephone": self.telephone,
             "isVerified": self.is_verified,
             "createdAt": self.created_at.isoformat() + "Z",
         }
@@ -92,16 +102,58 @@ class Agent(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
+    matricule = db.Column(db.String(30))
+    grade = db.Column(db.String(60))
     phone = db.Column(db.String(30))
-    status = db.Column(db.String(20), default="disponible")  # disponible | en_intervention
+    # disponible (actif) | en_mission | absent | hors_ligne
+    status = db.Column(db.String(20), default="disponible")
     created_at = db.Column(db.DateTime, default=_now)
+
+    points = db.relationship("AgentPoints", backref="agent", lazy=True)
+
+    def total_points(self):
+        return sum(p.points for p in self.points)
+
+    def points_this_year(self):
+        year = _now().year
+        return sum(p.points for p in self.points if p.year == year)
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
+            "matricule": self.matricule,
+            "grade": self.grade,
             "phone": self.phone,
             "status": self.status,
+            "totalPoints": self.total_points(),
+            "pointsThisYear": self.points_this_year(),
+        }
+
+
+class AgentPoints(db.Model):
+    """Points de performance attribués à un agent, conservés par année."""
+
+    __tablename__ = "agent_points"
+
+    id = db.Column(db.Integer, primary_key=True)
+    agent_id = db.Column(db.Integer, db.ForeignKey("agents.id"), nullable=False)
+    year = db.Column(db.Integer, nullable=False, default=lambda: _now().year)
+    points = db.Column(db.Integer, default=0)
+    reason = db.Column(db.String(200))
+    lieu = db.Column(db.String(120))
+    created_at = db.Column(db.DateTime, default=_now)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "agentId": self.agent_id,
+            "year": self.year,
+            "points": self.points,
+            "reason": self.reason,
+            "lieu": self.lieu,
+            "date": self.created_at.strftime("%Y-%m-%d"),
+            "heure": self.created_at.strftime("%H:%M"),
         }
 
 
@@ -109,9 +161,13 @@ class Intervention(db.Model):
     __tablename__ = "interventions"
 
     id = db.Column(db.Integer, primary_key=True)
-    alert_id = db.Column(db.Integer, db.ForeignKey("alerts.id"), nullable=False)
+    alert_id = db.Column(db.Integer, db.ForeignKey("alerts.id"))
     agent_id = db.Column(db.Integer, db.ForeignKey("agents.id"))
     status = db.Column(db.String(20), default="en_cours")  # en_cours | terminee | annulee
+    lieu = db.Column(db.String(120))
+    type_mission = db.Column(db.String(60))
+    duree_minutes = db.Column(db.Integer)
+    resultat = db.Column(db.String(20))  # reussie | partielle | echouee
     notes = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=_now)
     updated_at = db.Column(db.DateTime, default=_now, onupdate=_now)
@@ -122,7 +178,13 @@ class Intervention(db.Model):
             "alertId": self.alert_id,
             "agentId": self.agent_id,
             "status": self.status,
+            "lieu": self.lieu,
+            "typeMission": self.type_mission,
+            "dureeMinutes": self.duree_minutes,
+            "resultat": self.resultat,
             "notes": self.notes,
+            "date": self.created_at.strftime("%Y-%m-%d"),
+            "heure": self.created_at.strftime("%H:%M"),
             "createdAt": self.created_at.isoformat() + "Z",
             "updatedAt": self.updated_at.isoformat() + "Z",
         }
