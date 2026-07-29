@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeCity Lubumbashi — Carte live mairie</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <style>
+    html, body { margin: 0; height: 100%; font-family: system-ui, sans-serif; }
+    #map { position: absolute; inset: 0; }
+    .bar {
+      position: absolute; top: 12px; left: 12px; z-index: 1000; background: #0f172a;
+      color: #e2e8f0; padding: 10px 16px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.4);
+      font-size: 14px;
+    }
+    .bar b { color: #e11d48; }
+    .incident-marker { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2px solid #fff; box-shadow: 0 3px 8px rgba(0,0,0,.4); font-size: 16px; }
+    .incident-marker span { transform: rotate(45deg); }
+    .leaflet-popup-content { font-family: inherit; }
+  </style>
+</head>
+<body>
+  <div class="bar">🚨 <b>SafeCity Lubumbashi</b> — carte live · <span id="count">0</span> alerte(s)</div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+          integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+  <script>
+    const CATEGORIES = {};
+    const markers = new Map();
+    let map;
+
+    const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    function icon(cat) {
+      const c = CATEGORIES[cat] || { icon: '📍', color: '#0f766e' };
+      return L.divIcon({ className: '', html: `<div class="incident-marker" style="background:${c.color}"><span>${c.icon}</span></div>`, iconSize: [34, 34], iconAnchor: [17, 34], popupAnchor: [0, -34] });
+    }
+
+    function popup(a) {
+      const c = CATEGORIES[a.category] || { label: a.category, icon: '📍' };
+      return `<b>${c.icon} ${escapeHtml(c.label)}</b><br>${escapeHtml(a.description)}<br>
+        <small>Gravité : ${escapeHtml(a.severity)} · Priorité : ${escapeHtml(a.priority)} · Statut : ${escapeHtml(a.status)}</small>`;
+    }
+
+    function upsert(a) {
+      const m = markers.get(a.id);
+      if (m) { m.setPopupContent(popup(a)); m.setIcon(icon(a.category)); return; }
+      markers.set(a.id, L.marker([a.lat, a.lng], { icon: icon(a.category) }).addTo(map).bindPopup(popup(a)));
+      document.getElementById('count').textContent = markers.size;
+    }
+
+    async function init() {
+      const cfg = await fetch('/api/config').then((r) => r.json());
+      cfg.categories.forEach((c) => { CATEGORIES[c.id] = c; });
+      map = L.map('map').setView([cfg.center.lat, cfg.center.lng], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(map);
+
+      const alerts = await fetch('/api/alerts').then((r) => r.json());
+      alerts.forEach(upsert);
+
+      const socket = io();
+      socket.on('alert:new', upsert);
+      socket.on('alert:update', upsert);
+    }
+    init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signaler une alerte — SafeCity Lubumbashi</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚨</text></svg>" />
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">🚨</span>
+      <div>
+        <h1>SafeCity <span>Lubumbashi</span></h1>
+        <p class="tagline">La technologie au service de la sécurité communautaire</p>
+      </div>
+    </a>
+    <div class="header-status">
+      <a href="index.html" class="btn btn-ghost">← Retour à la carte</a>
+    </div>
+  </header>
+
+  <main class="form-page">
+    <section class="form-panel">
+      <h2>Signaler une alerte</h2>
+      <p class="sub">Votre signalement est anonyme et transmis en temps réel aux services de la mairie.</p>
+
+      <form id="report-form">
+        <div class="form-error" id="form-error" hidden></div>
+
+        <div class="field">
+          <label for="f-category">Catégorie *</label>
+          <select id="f-category" required></select>
+        </div>
+
+        <div class="field">
+          <label>Niveau de gravité *</label>
+          <div class="severity-group" id="severity-group"></div>
+        </div>
+
+        <div class="field">
+          <label for="f-description">Description *</label>
+          <textarea id="f-description" rows="3" maxlength="1000"
+            placeholder="Décrivez brièvement ce qui se passe…" required></textarea>
+        </div>
+
+        <div class="field">
+          <label>Localisation *</label>
+          <div class="location-row">
+            <button type="button" id="f-use-location" class="btn btn-ghost">📡 Ma position</button>
+            <span class="location-hint">ou cliquez sur la carte →</span>
+          </div>
+          <div class="coords" id="coords-display">Aucune position sélectionnée</div>
+        </div>
+
+        <div class="field">
+          <label for="f-photo">Photo (facultatif)</label>
+          <input type="file" id="f-photo" accept="image/*" />
+          <img id="photo-preview" class="photo-preview" alt="" hidden />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" id="submit-report" style="width:100%">Envoyer l'alerte</button>
+      </form>
+    </section>
+
+    <div class="map-wrap">
+      <div id="map"></div>
+    </div>
+  </main>
+
+  <div class="toast-container" id="toasts"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/leaflet/map_config.js"></script>
+  <script src="/js/gps.js"></script>
+  <script src="/js/leaflet_map.js"></script>
+  <script src="/js/alerts.js"></script>
+</body>
+</html>
