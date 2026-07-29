@@ -1,0 +1,23 @@
+# Dependances
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Donnees generees a l'execution
+data/incidents.json
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Environnement
+.env
+.env.local
+
+# Systeme
+.DS_Store
+Thumbs.db
+
+# Editeurs
+.vscode/
+.idea/
+*.swp
