@@ -85,6 +85,7 @@ python main.py
 - 📋 Tableau des alertes trié par priorité, filtres statut/catégorie, réception **temps réel**
 - 🔄 Traitement : marquer une alerte *vérifiée* / *résolue*
 - 👮 **Gestion des agents** : statuts temps réel (actif / en mission / absent / hors ligne), **points de performance** (barre par agent, conservés d'une année à l'autre), interventions avec **attribution automatique de points**
+- 🧠 **Analyse IA prédictive** : zones à risque (indice /100), heures de pointe, catégorie dominante, **carte de chaleur (heatmap)**
 - 📊 Statistiques (par statut, catégorie, priorité)
 - 🗺️ Carte live ouverte dans le navigateur
 
@@ -148,6 +149,7 @@ security-alert-system/
 | `PATCH` | `/api/agents/<id>/status` | admin | Changer le statut d'un agent |
 | `GET`/`POST` | `/api/agents/<id>/points` | admin | Points de performance (historique / attribution) |
 | `GET`/`POST` | `/api/agents/<id>/interventions` | admin | Interventions (auto-points au résultat) |
+| `GET`   | `/api/analysis/summary` · `/hotspots` · `/peak-hours` · `/heatmap` | public | Analyse IA des zones à risque |
 | `POST`  | `/api/auth/forgot` · `/reset` | public | Mot de passe oublié / réinitialisation |
 
 **Événements Socket.IO :** `alert:new`, `alert:update`, `presence`.
@@ -169,9 +171,15 @@ le canal temps réel Socket.IO. La CI (GitHub Actions) les exécute sur Python
 
 ## 🧠 Module d'IA (`ai_module/`)
 
-Classifieur de **priorité** des alertes (basse / moyenne / haute / critique) par
-**SVM linéaire calibré** + TF-IDF sur la description enrichie de la catégorie et
-de la gravité.
+**1. Classification de priorité** — SVM linéaire calibré + TF-IDF sur la
+description enrichie de la catégorie et de la gravité (basse / moyenne / haute /
+critique).
+
+**2. Analyse prédictive des zones** (`zone_analysis.py`) — découpe la ville en
+grille, calcule un **indice de risque** par zone (densité pondérée par gravité
+et récence), les **heures de pointe** et les points de **carte de chaleur**.
+Exposée via `/api/analysis/*` et affichée dans l'onglet « Analyse IA » du poste
+mairie + heatmap sur la carte.
 
 ```bash
 pip install -r ai_module/requirements.txt

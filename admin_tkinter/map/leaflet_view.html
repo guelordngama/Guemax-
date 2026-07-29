@@ -28,6 +28,7 @@
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
           integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
   <script>
     const CATEGORIES = {};
     const markers = new Map();
@@ -62,6 +63,34 @@
 
       const alerts = await fetch('/api/alerts').then((r) => r.json());
       alerts.forEach(upsert);
+
+      // Couche de chaleur (zones à risque) — activable via ?heat=1 ou le bouton.
+      let heatLayer = null;
+      async function loadHeat() {
+        const pts = await fetch('/api/analysis/heatmap').then((r) => r.json());
+        if (heatLayer) map.removeLayer(heatLayer);
+        heatLayer = L.heatLayer(pts, { radius: 30, blur: 20, maxZoom: 16 });
+        return heatLayer;
+      }
+      const wantHeat = new URLSearchParams(location.search).get('heat') === '1';
+      if (wantHeat) { (await loadHeat()).addTo(map); }
+
+      const HeatToggle = L.Control.extend({
+        options: { position: 'topright' },
+        onAdd() {
+          const b = L.DomUtil.create('button');
+          b.textContent = '🔥 Heatmap';
+          b.style.cssText = 'padding:6px 10px;cursor:pointer;border:none;border-radius:6px;background:#e11d48;color:#fff;font-weight:600';
+          let on = wantHeat;
+          b.onclick = async () => {
+            if (!heatLayer) await loadHeat();
+            on = !on;
+            if (on) heatLayer.addTo(map); else map.removeLayer(heatLayer);
+          };
+          return b;
+        },
+      });
+      map.addControl(new HeatToggle());
 
       const socket = io();
       socket.on('alert:new', upsert);

@@ -75,3 +75,12 @@ class ApiClient:
         res = requests.post(f"{self.base}/api/agents/{agent_id}/interventions",
                             json=payload, headers=self._headers(), timeout=10)
         return res.json()
+
+    # --- Analyse IA --------------------------------------------------------
+    def analysis_summary(self):
+        res = requests.get(f"{self.base}/api/analysis/summary", timeout=10)
+        return res.json() if res.status_code == 200 else {}
+
+    def analysis_hotspots(self):
+        res = requests.get(f"{self.base}/api/analysis/hotspots", timeout=10)
+        return res.json() if res.status_code == 200 else []

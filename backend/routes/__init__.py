@@ -4,6 +4,7 @@ from routes.auth import auth_bp
 from routes.alerts import alerts_bp
 from routes.users import users_bp
 from routes.agents import agents_bp
+from routes.analysis import analysis_bp
 
 
 def register_routes(app):
@@ -11,3 +12,4 @@ def register_routes(app):
     app.register_blueprint(alerts_bp, url_prefix="/api/alerts")
     app.register_blueprint(users_bp, url_prefix="/api/users")
     app.register_blueprint(agents_bp, url_prefix="/api/agents")
+    app.register_blueprint(analysis_bp, url_prefix="/api/analysis")
