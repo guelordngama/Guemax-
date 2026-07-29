@@ -2,6 +2,7 @@
 
 from flask import Blueprint, current_app, jsonify, request
 
+from config import LUBUMBASHI_BOUNDS
 from database import db
 from models import Alert
 from socket_events import emit_alert_update, emit_new_alert
@@ -29,10 +30,17 @@ def list_alerts():
     query = Alert.query
     status = request.args.get("status")
     category = request.args.get("category")
+    scope = request.args.get("scope")
     if status in STATUSES:
         query = query.filter_by(status=status)
     if category:
         query = query.filter_by(category=category)
+    if scope == "lubumbashi":
+        b = LUBUMBASHI_BOUNDS
+        query = query.filter(
+            Alert.lat.between(b["min_lat"], b["max_lat"]),
+            Alert.lng.between(b["min_lng"], b["max_lng"]),
+        )
     alerts = query.order_by(Alert.created_at.desc()).all()
     return jsonify([a.to_dict() for a in alerts])
 

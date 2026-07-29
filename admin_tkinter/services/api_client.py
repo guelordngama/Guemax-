@@ -29,9 +29,15 @@ class ApiClient:
             return True, data["user"]
         return False, (res.json().get("errors", ["Échec de connexion."]))
 
+    # --- Configuration -----------------------------------------------------
+    def get_config(self):
+        return requests.get(f"{self.base}/api/config", timeout=10).json()
+
     # --- Alertes -----------------------------------------------------------
-    def list_alerts(self):
-        return requests.get(f"{self.base}/api/alerts", timeout=10).json()
+    def list_alerts(self, scope="lubumbashi"):
+        # Par défaut, le poste mairie ne récupère que les alertes de Lubumbashi.
+        params = {"scope": scope} if scope else {}
+        return requests.get(f"{self.base}/api/alerts", params=params, timeout=10).json()
 
     def get_stats(self):
         return requests.get(f"{self.base}/api/alerts/stats/summary", timeout=10).json()

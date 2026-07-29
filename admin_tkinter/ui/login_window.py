@@ -1,44 +1,52 @@
-"""Fenêtre de connexion de la mairie."""
+"""Fenêtre de connexion de la mairie (thème centre de commandement)."""
 
 import tkinter as tk
 from tkinter import ttk
+
+from ui.theme import COLORS, fonts
 
 
 class LoginWindow:
     def __init__(self, root, api, on_success):
         self.api = api
         self.on_success = on_success
+        c = COLORS
+        f = fonts()
 
         self.win = tk.Toplevel(root)
         self.win.title("SafeCity Lubumbashi — Connexion mairie")
-        self.win.geometry("380x360")
+        self.win.geometry("400x430")
         self.win.resizable(False, False)
-        self.win.configure(bg="#0f172a")
+        self.win.configure(bg=c["bg"])
         self.win.protocol("WM_DELETE_WINDOW", root.destroy)
 
-        tk.Label(self.win, text="🚨", font=("Segoe UI Emoji", 42), bg="#0f172a", fg="#e11d48").pack(pady=(28, 4))
-        tk.Label(self.win, text="SafeCity Lubumbashi", font=("Segoe UI", 16, "bold"),
-                 bg="#0f172a", fg="#e2e8f0").pack()
-        tk.Label(self.win, text="Espace mairie — surveillance en temps réel",
-                 font=("Segoe UI", 9), bg="#0f172a", fg="#94a3b8").pack(pady=(0, 18))
+        card = tk.Frame(self.win, bg=c["panel"], highlightthickness=0)
+        card.pack(fill="both", expand=True, padx=22, pady=22)
+        tk.Frame(card, bg=c["primary"], height=4).pack(fill="x")
 
-        form = tk.Frame(self.win, bg="#0f172a")
-        form.pack(fill="x", padx=36)
+        inner = tk.Frame(card, bg=c["panel"])
+        inner.pack(fill="both", expand=True, padx=28, pady=24)
 
-        tk.Label(form, text="Identifiant", bg="#0f172a", fg="#94a3b8", anchor="w").pack(fill="x")
-        self.username = ttk.Entry(form)
-        self.username.pack(fill="x", pady=(2, 12))
+        tk.Label(inner, text="🚨", bg=c["panel"], fg=c["primary"], font=("Segoe UI Emoji", 40)).pack(pady=(6, 2))
+        tk.Label(inner, text="SafeCity Lubumbashi", bg=c["panel"], fg=c["text"], font=f["title"]).pack()
+        tk.Label(inner, text="CENTRE DE COMMANDEMENT", bg=c["panel"], fg=c["muted"],
+                 font=("Segoe UI", 8, "bold")).pack(pady=(0, 18))
+
+        tk.Label(inner, text="Identifiant", bg=c["panel"], fg=c["muted"], font=f["small"], anchor="w").pack(fill="x")
+        self.username = ttk.Entry(inner)
+        self.username.pack(fill="x", pady=(3, 12), ipady=3)
         self.username.insert(0, "admin")
 
-        tk.Label(form, text="Mot de passe", bg="#0f172a", fg="#94a3b8", anchor="w").pack(fill="x")
-        self.password = ttk.Entry(form, show="•")
-        self.password.pack(fill="x", pady=(2, 8))
+        tk.Label(inner, text="Mot de passe", bg=c["panel"], fg=c["muted"], font=f["small"], anchor="w").pack(fill="x")
+        self.password = ttk.Entry(inner, show="•")
+        self.password.pack(fill="x", pady=(3, 10), ipady=3)
 
-        self.error = tk.Label(form, text="", bg="#0f172a", fg="#fca5a5", font=("Segoe UI", 9), wraplength=300)
+        self.error = tk.Label(inner, text="", bg=c["panel"], fg="#fca5a5", font=f["small"], wraplength=300)
         self.error.pack(fill="x")
 
-        ttk.Button(form, text="Se connecter", command=self._submit).pack(fill="x", pady=(10, 0))
+        ttk.Button(inner, text="Se connecter", style="Accent.TButton", command=self._submit).pack(fill="x", pady=(12, 0), ipady=3)
         self.password.bind("<Return>", lambda _e: self._submit())
+        self.username.focus_set()
 
     def _submit(self):
         self.error.config(text="")
@@ -47,5 +55,4 @@ class LoginWindow:
             self.win.destroy()
             self.on_success(result)
         else:
-            msg = result if isinstance(result, str) else " ".join(result)
-            self.error.config(text=msg)
+            self.error.config(text=result if isinstance(result, str) else " ".join(result))

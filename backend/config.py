@@ -13,6 +13,23 @@ PROJECT_DIR = os.path.dirname(BASE_DIR)
 # Centre approximatif de Lubumbashi (RDC).
 LUBUMBASHI_CENTER = {"lat": -11.6647, "lng": 27.4794}
 
+# Emprise géographique de Lubumbashi. Le poste de la mairie ne traite que les
+# alertes situées dans ces limites (les autres villes sont ignorées).
+LUBUMBASHI_BOUNDS = {
+    "min_lat": -11.78, "max_lat": -11.53,
+    "min_lng": 27.35, "max_lng": 27.62,
+}
+
+
+def in_lubumbashi(lat, lng):
+    """Vrai si les coordonnées sont dans l'emprise de Lubumbashi."""
+    b = LUBUMBASHI_BOUNDS
+    return (
+        lat is not None and lng is not None
+        and b["min_lat"] <= lat <= b["max_lat"]
+        and b["min_lng"] <= lng <= b["max_lng"]
+    )
+
 
 class Config:
     """Configuration de base commune à tous les environnements."""

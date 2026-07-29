@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 
-from config import Config, LUBUMBASHI_CENTER
+from config import Config, LUBUMBASHI_CENTER, LUBUMBASHI_BOUNDS
 from database import init_db
 from routes import register_routes
 from socket_events import socketio
@@ -39,9 +39,12 @@ def create_app(config_object=Config):
     # --- Configuration partagée avec le frontend ---------------------------
     @app.get("/api/config")
     def api_config():
-        return jsonify(
-            {"center": LUBUMBASHI_CENTER, "categories": CATEGORIES, "severities": SEVERITIES}
-        )
+        return jsonify({
+            "center": LUBUMBASHI_CENTER,
+            "bounds": LUBUMBASHI_BOUNDS,
+            "categories": CATEGORIES,
+            "severities": SEVERITIES,
+        })
 
     @app.get("/api/health")
     def health():

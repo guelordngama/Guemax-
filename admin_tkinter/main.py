@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from services.api_client import ApiClient
 from ui.dashboard import Dashboard
 from ui.login_window import LoginWindow
+from ui.theme import apply_theme
 
 API_BASE = os.environ.get("SAFECITY_API", "http://localhost:5000")
 
@@ -21,6 +22,7 @@ API_BASE = os.environ.get("SAFECITY_API", "http://localhost:5000")
 def main():
     api = ApiClient(API_BASE)
     root = tk.Tk()
+    apply_theme(root)  # thème appliqué dès le départ (login + dashboard)
     root.withdraw()  # masqué jusqu'à la connexion
 
     def on_success(user):

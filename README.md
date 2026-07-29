@@ -78,9 +78,11 @@ python main.py
 - ⚡ Mise à jour **temps réel** de la carte et du fil des alertes
 - ✔️ Confirmation communautaire d'une alerte
 
-**Poste mairie (Tkinter)**
+**Poste mairie (Tkinter) — interface « centre de commandement »**
+- 🖥️ Thème sombre professionnel : topbar, **indicateurs KPI**, horloge, indicateur de connexion, barre de statut
+- 📡 Ne traite que les alertes **de Lubumbashi** (filtre géographique, temps réel inclus)
 - 🔐 Connexion sécurisée (JWT)
-- 📋 Tableau des alertes trié par priorité, réception **temps réel**
+- 📋 Tableau des alertes trié par priorité, filtres statut/catégorie, réception **temps réel**
 - 🔄 Traitement : marquer une alerte *vérifiée* / *résolue*
 - 📊 Statistiques (par statut, catégorie, priorité)
 - 🗺️ Carte live ouverte dans le navigateur

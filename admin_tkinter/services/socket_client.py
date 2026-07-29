@@ -9,9 +9,20 @@ import socketio
 
 
 class SocketClient:
-    def __init__(self, base_url, on_new=None, on_update=None, on_presence=None):
+    def __init__(self, base_url, on_new=None, on_update=None, on_presence=None,
+                 on_connect=None, on_disconnect=None):
         self.base = base_url.rstrip("/")
         self.sio = socketio.Client(reconnection=True)
+
+        @self.sio.event
+        def connect():
+            if on_connect:
+                on_connect()
+
+        @self.sio.event
+        def disconnect():
+            if on_disconnect:
+                on_disconnect()
 
         @self.sio.on("alert:new")
         def _new(data):
