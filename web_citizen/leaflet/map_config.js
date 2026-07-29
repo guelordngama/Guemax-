@@ -8,6 +8,50 @@ SC.API = '';
 SC.config = null;
 SC.categoriesById = {};
 
+// --- Session / authentification citoyenne ---------------------------------
+
+SC.token = () => localStorage.getItem('safecity_token');
+
+SC.user = () => {
+  try { return JSON.parse(localStorage.getItem('safecity_user') || 'null'); }
+  catch (_e) { return null; }
+};
+
+SC.setSession = (token, user) => {
+  localStorage.setItem('safecity_token', token);
+  localStorage.setItem('safecity_user', JSON.stringify(user));
+};
+
+SC.logout = () => {
+  localStorage.removeItem('safecity_token');
+  localStorage.removeItem('safecity_user');
+  window.location.href = 'auth.html';
+};
+
+/** En-têtes HTTP incluant le jeton si présent. */
+SC.authHeaders = (base) => {
+  const h = Object.assign({ 'Content-Type': 'application/json' }, base || {});
+  const t = SC.token();
+  if (t) h['Authorization'] = 'Bearer ' + t;
+  return h;
+};
+
+/** Redirige vers la page d'authentification si aucun jeton n'est présent. */
+SC.requireAuth = () => {
+  if (!SC.token()) { window.location.href = 'auth.html'; return false; }
+  return true;
+};
+
+/** Injecte le nom d'utilisateur + un bouton de déconnexion dans l'en-tête. */
+SC.renderAccount = () => {
+  const el = document.getElementById('account');
+  const u = SC.user();
+  if (!el || !u) return;
+  el.innerHTML = `<span class="account-name">👤 ${SC.escapeHtml(u.username)}</span>
+    <button class="btn btn-ghost btn-sm" id="btn-logout">Déconnexion</button>`;
+  document.getElementById('btn-logout').addEventListener('click', SC.logout);
+};
+
 /** Charge la configuration (centre, catégories, gravités) depuis l'API. */
 SC.loadConfig = async function () {
   SC.config = await fetch(SC.API + '/api/config').then((r) => r.json());

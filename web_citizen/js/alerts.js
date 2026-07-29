@@ -150,7 +150,7 @@ function initReportPage() {
     try {
       const res = await fetch(SC.API + '/api/alerts', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: SC.authHeaders(),
         body: JSON.stringify(payload),
       });
       const data = await res.json();
@@ -173,7 +173,9 @@ function initReportPage() {
 // --- Amorçage --------------------------------------------------------------
 
 (async function bootstrap() {
+  if (!SC.requireAuth()) return; // redirige vers auth.html si non connecté
   await SC.loadConfig();
+  SC.renderAccount();
   if (document.getElementById('report-form')) initReportPage();
   else if (document.getElementById('map')) initHomePage();
 })().catch((err) => {

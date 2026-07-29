@@ -66,6 +66,11 @@ python main.py
 
 ## ✨ Fonctionnalités (cœur fonctionnel)
 
+**Comptes citoyens**
+- 👤 **Inscription** à la première visite (nom, post-nom, nom d'utilisateur, mot de passe, date de naissance, ville, nationalité, e-mail)
+- ✉️ **Validation du compte par code** (mode démo : le code est journalisé et affiché ; SMTP/SMS branchable via `AUTH_DEV_MODE`)
+- 🔑 **Connexion** simple (utilisateur + mot de passe) pour les visites suivantes ; le site est protégé par session (JWT)
+
 **Site citoyen**
 - 🗺️ Carte des alertes centrée sur Lubumbashi (Leaflet + OpenStreetMap, sans clé API)
 - 📡 Signalement par **position GPS** ou clic sur la carte
@@ -124,6 +129,9 @@ security-alert-system/
 |---------|-------|-------|-------------|
 | `GET`   | `/api/config` | public | Centre carte, catégories, gravités |
 | `GET`   | `/api/health` | public | Sonde de disponibilité |
+| `POST`  | `/api/auth/signup` | public | Inscription citoyenne (profil complet) |
+| `POST`  | `/api/auth/verify` | public | Valider le compte avec le code reçu |
+| `POST`  | `/api/auth/resend` | public | Renvoyer un code de validation |
 | `POST`  | `/api/auth/login` | public | Connexion (renvoie un JWT) |
 | `POST`  | `/api/auth/register` | admin | Créer un compte agent/admin |
 | `GET`   | `/api/alerts` | public | Liste des alertes (filtres `status`, `category`) |

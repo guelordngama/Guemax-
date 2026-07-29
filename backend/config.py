@@ -21,6 +21,13 @@ class Config:
     JWT_SECRET = os.environ.get("JWT_SECRET", "safecity-lubumbashi-jwt-dev")
     JWT_EXPIRES_HOURS = int(os.environ.get("JWT_EXPIRES_HOURS", "12"))
 
+    # Validation des comptes citoyens par code.
+    # En mode démo (défaut), le code est journalisé et renvoyé par l'API pour
+    # permettre la validation sans service d'envoi ; passer AUTH_DEV_MODE=0 pour
+    # le désactiver une fois un vrai envoi SMTP/SMS branché.
+    AUTH_DEV_MODE = os.environ.get("AUTH_DEV_MODE", "1") == "1"
+    VERIFICATION_TTL_MINUTES = int(os.environ.get("VERIFICATION_TTL_MINUTES", "15"))
+
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "DATABASE_URL",
         "sqlite:///" + os.path.join(PROJECT_DIR, "database", "security_alert.db"),

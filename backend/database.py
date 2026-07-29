@@ -32,6 +32,7 @@ def seed(app):
                 email=admin_cfg["email"],
                 password_hash=hash_password(admin_cfg["password"]),
                 role="admin",
+                is_verified=True,
             )
         )
 

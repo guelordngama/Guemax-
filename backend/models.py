@@ -17,6 +17,19 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(256), nullable=False)
     role = db.Column(db.String(20), default="citizen")  # citizen | admin | agent
+
+    # Profil citoyen
+    nom = db.Column(db.String(80))
+    post_nom = db.Column(db.String(80))
+    date_naissance = db.Column(db.String(20))
+    ville = db.Column(db.String(80))
+    nationalite = db.Column(db.String(80))
+
+    # Validation du compte par code
+    is_verified = db.Column(db.Boolean, default=False)
+    verification_code = db.Column(db.String(10))
+    verification_expires = db.Column(db.DateTime)
+
     created_at = db.Column(db.DateTime, default=_now)
 
     def to_dict(self):
@@ -25,6 +38,11 @@ class User(db.Model):
             "username": self.username,
             "email": self.email,
             "role": self.role,
+            "nom": self.nom,
+            "postNom": self.post_nom,
+            "ville": self.ville,
+            "nationalite": self.nationalite,
+            "isVerified": self.is_verified,
             "createdAt": self.created_at.isoformat() + "Z",
         }
 
@@ -44,6 +62,7 @@ class Alert(db.Model):
     priority = db.Column(db.String(20), default="moyenne")  # attribuée par l'IA/le classifieur
     priority_score = db.Column(db.Float, default=0.0)
     confirmations = db.Column(db.Integer, default=0)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))  # citoyen signalant (facultatif)
     created_at = db.Column(db.DateTime, default=_now)
     updated_at = db.Column(db.DateTime, default=_now, onupdate=_now)
 

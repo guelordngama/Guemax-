@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeCity Lubumbashi — Connexion / Inscription</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚨</text></svg>" />
+</head>
+<body class="auth-body">
+  <div class="auth-card">
+    <div class="auth-head">
+      <span class="brand-icon">🚨</span>
+      <h1>SafeCity <span>Lubumbashi</span></h1>
+      <p class="tagline">La technologie au service de la sécurité communautaire</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-mode="signup">Créer un compte</button>
+      <button class="auth-tab" data-mode="login">Se connecter</button>
+    </div>
+
+    <div class="form-error" id="auth-error" hidden></div>
+    <div class="form-info" id="auth-info" hidden></div>
+
+    <!-- Inscription -->
+    <form id="signup-form" class="auth-form">
+      <div class="grid2">
+        <div class="field"><label>Nom *</label><input id="s-nom" required /></div>
+        <div class="field"><label>Post-nom</label><input id="s-postnom" /></div>
+      </div>
+      <div class="field"><label>Nom d'utilisateur *</label><input id="s-username" required /></div>
+      <div class="grid2">
+        <div class="field"><label>Date de naissance</label><input id="s-dob" type="date" /></div>
+        <div class="field"><label>Nationalité</label><input id="s-nat" value="Congolaise" /></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Ville *</label><input id="s-ville" value="Lubumbashi" required /></div>
+        <div class="field"><label>Adresse Gmail *</label><input id="s-email" type="email" placeholder="exemple@gmail.com" required /></div>
+      </div>
+      <div class="field"><label>Mot de passe *</label><input id="s-password" type="password" required /></div>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%">S'inscrire</button>
+    </form>
+
+    <!-- Connexion -->
+    <form id="login-form" class="auth-form" hidden>
+      <div class="field"><label>Nom d'utilisateur</label><input id="l-username" required /></div>
+      <div class="field"><label>Mot de passe</label><input id="l-password" type="password" required /></div>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Se connecter</button>
+    </form>
+
+    <!-- Validation par code -->
+    <form id="verify-form" class="auth-form" hidden>
+      <p class="verify-intro">Un code de validation a été envoyé. Saisissez-le pour activer votre compte.</p>
+      <div class="dev-code" id="dev-code" hidden></div>
+      <div class="field"><label>Code de validation</label><input id="v-code" inputmode="numeric" maxlength="6" placeholder="000000" required /></div>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Valider mon compte</button>
+      <button type="button" class="btn btn-ghost btn-sm" id="v-resend" style="width:100%;margin-top:8px">Renvoyer le code</button>
+    </form>
+  </div>
+
+  <div class="toast-container" id="toasts"></div>
+
+  <script src="/leaflet/map_config.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

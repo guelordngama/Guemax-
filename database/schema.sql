@@ -5,12 +5,20 @@
 -- permet une création manuelle sous SQLite/PostgreSQL si nécessaire.
 
 CREATE TABLE IF NOT EXISTS users (
-    id            INTEGER PRIMARY KEY AUTOINCREMENT,
-    username      VARCHAR(80)  NOT NULL UNIQUE,
-    email         VARCHAR(120) NOT NULL UNIQUE,
-    password_hash VARCHAR(256) NOT NULL,
-    role          VARCHAR(20)  DEFAULT 'citizen',   -- citizen | admin | agent
-    created_at    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+    id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+    username             VARCHAR(80)  NOT NULL UNIQUE,
+    email                VARCHAR(120) NOT NULL UNIQUE,
+    password_hash        VARCHAR(256) NOT NULL,
+    role                 VARCHAR(20)  DEFAULT 'citizen',   -- citizen | admin | agent
+    nom                  VARCHAR(80),
+    post_nom             VARCHAR(80),
+    date_naissance       VARCHAR(20),
+    ville                VARCHAR(80),
+    nationalite          VARCHAR(80),
+    is_verified          BOOLEAN      DEFAULT 0,
+    verification_code    VARCHAR(10),
+    verification_expires TIMESTAMP,
+    created_at           TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS alerts (
@@ -26,6 +34,7 @@ CREATE TABLE IF NOT EXISTS alerts (
     priority       VARCHAR(20)  DEFAULT 'moyenne',  -- basse | moyenne | haute | critique
     priority_score REAL         DEFAULT 0.0,
     confirmations  INTEGER      DEFAULT 0,
+    user_id        INTEGER      REFERENCES users(id),   -- citoyen signalant (facultatif)
     created_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     updated_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );

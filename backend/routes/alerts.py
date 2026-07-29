@@ -7,6 +7,15 @@ from models import Alert
 from socket_events import emit_alert_update, emit_new_alert
 from utils.classification_ai import classify_priority
 from utils.helpers import STATUSES, save_photo, validate_alert
+from utils.security import decode_token
+
+
+def _current_user_id():
+    """Identifiant du citoyen connecté si un jeton valide est fourni, sinon None."""
+    header = request.headers.get("Authorization", "")
+    token = header[7:] if header.startswith("Bearer ") else None
+    payload = decode_token(token) if token else None
+    return payload["sub"] if payload else None
 
 alerts_bp = Blueprint("alerts", __name__)
 
@@ -53,6 +62,7 @@ def create_alert():
         photo=photo,
         priority=priority,
         priority_score=score,
+        user_id=_current_user_id(),
     )
     db.session.add(alert)
     db.session.commit()
